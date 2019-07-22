@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab&display=swap" rel="stylesheet">
+
+    <!-- JQ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="transparency.css">
+    <title>Congress 113 Attendance Statistics</title>
+</head>
+
+<!-- BODY -->
+
+<body>
+    <!-- LOGO AND CONTACT SECTION -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" style="background-color:skyblue;">
+                <img class="img-responsive" id="capitol" src="transparency logo.png" alt="logo">
+            </div>
+            <div class="col-sm-6" style="background-color:skyblue;">
+                <p class="contact">Contact Us</p>
+            </div>
+            <div class="col-sm-2" style="background-color:skyblue;">
+                <a href="mailto:info@tgif.net"><img class="img-responsive" id="envelope" src="icon2.png"></img></a>
+            </div>
+        </div>
+
+        <!-- NAV MENU -->
+
+        <nav class="navbar navbar-left">
+            <ul class="nav navbar-nav">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <li><a id="home" href="transparency-index.html">Home</a>
+                        </li>
+                    </div>
+                    <div class="col-sm-3">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="congress">Congress 113
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-data.html">House</a></li>
+                                <li><a href="senate-data.html">Senate</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                    <div class="col-sm-4">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-data.html">House</a></li>
+                                <li class="liactive"><a href="senate-data.html">Senate</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                    <div class="col-sm-3">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-data.html">House</a></li>
+                                <li><a href="senate-data.html">Senate</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+
+        <br>
+        <br>
+
+        <!-- CONTENT -->
+        <header class="header1">
+            <h1>Attendance
+            </h1>
+        </header>
+
+        <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
+            Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most
+            cases, debates continue even if a majority is not present.</p>
+
+        <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye"
+            or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters,
+            as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic
+            device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if
+            present) cast the tiebreaking vote.</p>
+        <br>
+        <br>
+        <header class="header1">
+            <h1>Senate at a Glance
+            </h1>
+        </header>
+        <!-- TABLE -->
+        <div class="table">
+                <table class="table table-bordered" id="senateAtGlance">
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+        <br>
+        <br>
+        <header class="header1">
+            <h1>Least Engaged (Bottom 10% Attendance)
+            </h1>
+        </header>
+        <br>
+        <br>
+        <header class="header1">
+            <h1>Most Engaged (Top 10% Attendance)
+            </h1>
+        </header>
+        <br>
+        <br>
+
+
+        <!-- FOOTER -->
+        <footer class="container-fluid bg-4 text-center">
+            <p class=footer> &#169 2019 &#9474 TGIF All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="pro-congress-113-senate.js">
+    </script>
+    <script src="statistics.json">
+    </script>
+    <script src="statistics.js">
+    </script>
+
+    <!-- TABLE -->
+    <div class="table">
+        <table class="table table-bordered" id="senate-at-glance">
+            <thead>
+                <tr>
+                    <th class="party">Party</th>
+                    <th class="number-of-representants">Number of Representants</th>
+                    <th class="votes">% Votes with the Party</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- ***** ORIGINALLY CREATED HERE OBJECT AND MOVED TO THE "statistics.js" FILE *****
+    CREATING OBJECT IN HTML
+    Define DIV
+    <div id="senateAtGlance"></div>
+    Creating script to enter the data
+    Getting the value from the elements (keys) belonging to the table
+    <script>
+        var dataStat = {
+            "statistics": [{
+                    "party": "Republican",
+                    "numberOfReps": 46,
+                    "prcVotedWithParty": 0
+                },
+                {
+                    "party": "Democrat",
+                    "numberOfReps": 57,
+                    "prcVotedWithParty": 0
+                },
+                {
+                    "party": "Independent",
+                    "numberOfReps": 2,
+                    "prcVotedWithParty": 0
+                }
+            ]
+        }
+        //  document.getElementById("senateAtGlance").innerHTML = dataStat.statistics[0].party + " " 
+        //  + dataStat.statistics[0].numberOfReps + " " + dataStat.statistics[0].prcVotedWithParty;
+    </script> -->
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

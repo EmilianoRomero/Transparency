@@ -1,0 +1,143 @@
+body,
+html {
+  background: url("capitolhill.png");
+  margin: 0px;
+  padding: 0px;
+  background-color: #adadad; /* Used if the image is unavailable */
+  background-position: right; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain;
+  font-family: 'Arbutus Slab', serif;
+}
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: skyblue;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 2.5 s;
+  }
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #adadad;
+  float: right;
+  margin-right: 20px;
+  margin-top: 12px;
+  }
+  
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: skyblue;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: transparent;
+  display: none;
+  overflow: hidden;
+  }
+
+.dropdown-menu.show {
+  border: none;
+  }
+
+.navbar {
+  background-color: skyblue;
+  margin-top: 15px;
+  }
+
+.contact {
+  text-align: right;
+  margin-top: 12%;
+  font-weight: bold;
+  font-size: 120%;
+  }
+
+#envelope {
+  margin-top: 40px;
+  margin-left: 10px;
+  }
+
+.container-fluid {
+  background-color: skyblue;
+  color: black;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.footer {
+  margin-top: 15px;
+  padding: 15px;
+}
+
+.col-sm-7 {
+  flex: 100%;
+  max-width: 100%;
+}
+.col-sm-5 {
+  flex: 100%;
+  max-width: 100%;
+}
+
+/*.nav {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-items: stretch;
+}
+
+#home {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#congress {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#attendance {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+#loyalty{
+  grid-column-start: 4
+}*/
+
+
+#capitol {
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+a:hover {
+  color: black;
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#selectors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+

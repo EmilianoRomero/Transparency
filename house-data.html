@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="transparency.css">
+    <title>Congress 113 - House</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" style="background-color:skyblue;">
+                <img class="img-responsive" id="capitol" src="transparency logo.png" alt="logo">
+            </div>
+            <div class="col-sm-6" style="background-color:skyblue;">
+                <p class="contact">Contact Us</p>
+            </div>
+            <div class="col-sm-2" style="background-color:skyblue;">
+                <a href="mailto:info@tgif.net"><img class="img-responsive" id="envelope" src="icon2.png"></img></a>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-left">
+            <ul class="nav navbar-nav">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <li><a href="transparency-index.html">Home</a>
+                        </li>
+                    </div>
+                    <div class="col-sm-8">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="liactive"><a href="house-data.html">House</a></li>
+                                <li><a href="senate-data.html">Senate</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+        <br>
+        <br>
+        <header class="header1">
+            <h1>Congressmen</h1>
+        </header>
+
+        <p>The major power of the House is to pass federal legislation that affects the entire country, although its
+            bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law
+            (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The
+            House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached
+            officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no
+            majority in the Electoral College.</p>
+
+        <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but
+            every state is entitled to at least one representative.</p>
+
+        <!-- INPUT -->
+        <div class="row" id="selectors">
+            <div class="checkboxes">
+                <label for="filterbyparty">Filter by Party:</label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="rep" value="R"
+                        onchange="CreateTableFromJSON()"> Republican </label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="dem" value="D"
+                        onchange="CreateTableFromJSON()"> Democrat</label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="indie" value="I"
+                        onchange="CreateTableFromJSON()"> Independent</label>
+            </div>
+            <div class="dropdownlist">
+                <label for="filterbystate">Filter by State:</label>
+                <select class="filter" id="filterbystate" name="states" onchange="CreateTableFromJSON()">
+                    <option value="">--Choose State--</option>
+                </select>
+            </div>
+        </div>
+
+        <table class="table table-bordered" id="house-data">
+            <thead>
+                <tr>
+                    <th class="name">Name</th>
+                    <th class="party">Party</th>
+                    <th class="seniority">Seniority</th>
+                    <th class="state">State</th>
+                    <th class="votes">% Votes with the Party</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <input type="button" id="btnDelete" value="Delete Rows" onclick="DeleteRows()" />
+        <br>
+        <br>
+        <!-- FOOTER -->
+        <footer class="container-fluid bg-4 text-center">
+            <p class=footer> &#169 2019 &#9474 TGIF All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="pro-congress-113-house.js">
+    </script>
+    <script src="house-data.js">
+    </script>
+    <!-- SCRIPT CLEAR TABLE -->
+    <script type="text/javascript">
+        function DeleteRows() {
+            var rowCount = table.rows.length;
+            for (var i = rowCount - 1; i > 0; i--) {
+                table.deleteRow(i);
+            }
+        }
+        var table = document.getElementById("house-data");
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
