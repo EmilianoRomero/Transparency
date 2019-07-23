@@ -96,18 +96,66 @@
             <h1>Senate at a Glance
             </h1>
         </header>
+        <!-- TABLE -->
+        <div class="table">
+            <table class="table table-bordered" id="senateAtGlance">
+                <thead>
+                    <tr>
+                        <th class="party">Party</th>
+                        <th class="number-of-representants">Number of Representants</th>
+                        <th class="votes">% Votes with the Party</th>
+                    </tr>
+                </thead>
+                <tbody id="glance">
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
         <header class="header1">
             <h1>Least Loyal (Bottom 10% of Party)
             </h1>
         </header>
+        <!-- TABLE -->
+        <div class="table">
+            <table class="table table-bordered" id="leastloyal">
+                <thead>
+                    <tr>
+                        <th class="name">Name</th>
+                        <th class="party">Party</th>
+                        <th class="idnumber">ID Number</th>
+                        <th class="votes">Votes</th>
+                        <th class="voteswithpartypct">% of Votes with the Party</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyleast">
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
         <header class="header1">
-            <h1>Least Loyal (Bottom 10% of Party)
+            <h1>Most Loyal (Top 10% of Party)
             </h1>
         </header>
+        <!-- TABLE -->
+        <div class="table">
+            <table class="table table-bordered" id="mostloyal">
+                <thead>
+                    <tr>
+                        <th class="name">Name</th>
+                        <th class="party">Party</th>
+                        <th class="idnumber">ID Number</th>
+                        <th class="votes">Votes</th>
+                        <th class="voteswithpartypct">% of Votes with the Party</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodymost">
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
         <br>
         <br>
 
@@ -121,39 +169,10 @@
     <!-- SCRIPTS -->
     <script src="pro-congress-113-senate.js">
     </script>
-    <script src="statistics.json">
-    </script>
     <script src="statistics.js">
     </script>
-
-    <!-- ***** ORIGINALLY CREATED HERE OBJECT AND MOVED TO THE "statistics.js" FILE *****
-    CREATING OBJECT IN HTML
-    Define DIV
-    <div id="senateAtGlance"></div>
-    Creating script to enter the data
-    Getting the value from the elements (keys) belonging to the table
-    <script>
-        var dataStat = {
-            "statistics": [{
-                    "party": "Republican",
-                    "numberOfReps": 46,
-                    "prcVotedWithParty": 92.04
-                },
-                {
-                    "party": "Democrat",
-                    "numberOfReps": 57,
-                    "prcVotedWithParty": 91.89
-                },
-                {
-                    "party": "Independent",
-                    "numberOfReps": 2,
-                    "prcVotedWithParty": 83.50
-                }
-            ]
-        }
-        //  document.getElementById("senateAtGlance").innerHTML = dataStat.statistics[0].party + " " 
-        //  + dataStat.statistics[0].numberOfReps + " " + dataStat.statistics[0].prcVotedWithParty;
-    </script> -->
+    <script src="statistics.json">
+    </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

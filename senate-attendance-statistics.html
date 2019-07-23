@@ -104,23 +104,58 @@
         </header>
         <!-- TABLE -->
         <div class="table">
-                <table class="table table-bordered" id="senateAtGlance">
-                    <tbody>
-                        
-                    </tbody>
-                </table>
+            <table class="table table-bordered" id="senateAtGlance">
+                <thead>
+                    <tr>
+                        <th class="party">Party</th>
+                        <th class="number-of-representants">Number of Representants</th>
+                        <th class="votes">% Votes with the Party</th>
+                    </tr>
+                </thead>
+                <tbody id="glance">
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
         <header class="header1">
             <h1>Least Engaged (Bottom 10% Attendance)
             </h1>
         </header>
+        <!-- TABLE -->
+        <div class="table">
+            <table class="table table-bordered" id="bottomatt">
+                <thead>
+                    <tr>
+                        <th class="name">Name</th>
+                        <th class="missedvotes">Number of Missed Votes</th>
+                        <th class="missedvotepct">% of Missed Votes</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodybottom">
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
         <header class="header1">
             <h1>Most Engaged (Top 10% Attendance)
             </h1>
         </header>
+        <!-- TABLE -->
+        <div class="table">
+            <table class="table table-bordered" id="topatt">
+                <thead>
+                    <tr>
+                        <th class="name">Name</th>
+                        <th class="missedvotes">Number of Missed Votes</th>
+                        <th class="missedvotepct">% of Missed Votes</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodytop">
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
 
@@ -134,64 +169,21 @@
     <!-- SCRIPTS -->
     <script src="pro-congress-113-senate.js">
     </script>
-    <script src="statistics.json">
-    </script>
     <script src="statistics.js">
     </script>
+    <script src="statistics.json">
+    </script>
 
-    <!-- TABLE -->
-    <div class="table">
-        <table class="table table-bordered" id="senate-at-glance">
-            <thead>
-                <tr>
-                    <th class="party">Party</th>
-                    <th class="number-of-representants">Number of Representants</th>
-                    <th class="votes">% Votes with the Party</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-
-        <!-- ***** ORIGINALLY CREATED HERE OBJECT AND MOVED TO THE "statistics.js" FILE *****
-    CREATING OBJECT IN HTML
-    Define DIV
-    <div id="senateAtGlance"></div>
-    Creating script to enter the data
-    Getting the value from the elements (keys) belonging to the table
-    <script>
-        var dataStat = {
-            "statistics": [{
-                    "party": "Republican",
-                    "numberOfReps": 46,
-                    "prcVotedWithParty": 0
-                },
-                {
-                    "party": "Democrat",
-                    "numberOfReps": 57,
-                    "prcVotedWithParty": 0
-                },
-                {
-                    "party": "Independent",
-                    "numberOfReps": 2,
-                    "prcVotedWithParty": 0
-                }
-            ]
-        }
-        //  document.getElementById("senateAtGlance").innerHTML = dataStat.statistics[0].party + " " 
-        //  + dataStat.statistics[0].numberOfReps + " " + dataStat.statistics[0].prcVotedWithParty;
-    </script> -->
-
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
