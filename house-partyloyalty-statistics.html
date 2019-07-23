@@ -82,108 +82,113 @@
         <br>
 
         <!-- CONTENT -->
-        <header class="header1">
-            <h1>Party Loyalty
-            </h1>
-        </header>
+        <div class="row">
+            <div class="col-sm-6">
+                <header class="header1">
+                    <h1>Party Loyalty
+                    </h1>
+                </header>
 
-        <p>TThose who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively,
-            tend to be the most faithful in voting for their party's nominee for office and legislation that backs their
-            party's agenda.</p>
-        <br>
-        <br>
-        <header class="header1">
-            <h1>House at a Glance
-            </h1>
-        </header>
-        <!-- TABLE -->
-        <div class="table">
-            <table class="table table-bordered" id="houseAtGlance">
-                <thead>
-                    <tr>
-                        <th class="party">Party</th>
-                        <th class="number-of-representants">Number of Representants</th>
-                        <th class="votes">% Votes with the Party</th>
-                    </tr>
-                </thead>
-                <tbody id="glance">
-                </tbody>
-            </table>
+                <p>TThose who consider themselves to be strong partisans, strong Democrats and strong Republicans
+                    respectively,
+                    tend to be the most faithful in voting for their party's nominee for office and legislation that
+                    backs their
+                    party's agenda.</p>
+            </div>
+            <div class="col-sm-6">
+                <header class="header1">
+                    <h1>House at a Glance
+                    </h1>
+                </header>
+                <!-- TABLE -->
+                <div class="table">
+                    <table class="table table-bordered" id="houseAtGlance">
+                        <thead>
+                            <tr>
+                                <th class="party">Party</th>
+                                <th class="number-of-representants">Number of Representants</th>
+                                <th class="votes">% Votes with the Party</th>
+                            </tr>
+                        </thead>
+                        <tbody id="glance">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <br>
         <br>
-        <header class="header1">
-            <h1>Least Loyal (Bottom 10% of Party)
-            </h1>
-        </header>
-        <!-- TABLE -->
-        <div class="table">
-            <table class="table table-bordered" id="leastloyal">
-                <thead>
-                    <tr>
-                        <th class="name">Name</th>
-                        <th class="party">Party</th>
-                        <th class="idnumber">ID Number</th>
-                        <th class="votes">Votes</th>
-                        <th class="voteswithpartypct">% of Votes with the Party</th>
-                    </tr>
-                </thead>
-                <tbody id="tbodyleast">
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-sm-6">
+                <header class="header1">
+                    <h1>Least Loyal (Bottom 10% of Party)
+                    </h1>
+                </header>
+                <!-- TABLE -->
+                <div class="table">
+                    <table class="table table-bordered" id="leastloyal">
+                        <thead>
+                            <tr>
+                                <th class="name">Name</th>
+                                <th class="votes">Votes with the Party</th>
+                                <th class="voteswithpartypct">% of Votes with the Party</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyleast">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <header class="header1">
+                    <h1>Most Loyal (Top 10% of Party)
+                    </h1>
+                </header>
+                <!-- TABLE -->
+                <div class="table">
+                    <table class="table table-bordered" id="mostloyal">
+                        <thead>
+                            <tr>
+                                <th class="name">Name</th>
+                                <th class="votes">Votes with the Party</th>
+                                <th class="voteswithpartypct">% of Votes with the Party</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodymost">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <!-- FOOTER -->
+            <footer class="container-fluid bg-4 text-center">
+                <p class=footer> &#169 2019 &#9474 TGIF All Rights Reserved</p>
+            </footer>
         </div>
-        <br>
-        <br>
-        <header class="header1">
-            <h1>Most Loyal (Top 10% of Party)
-            </h1>
-        </header>
-        <!-- TABLE -->
-        <div class="table">
-            <table class="table table-bordered" id="mostloyal">
-                <thead>
-                    <tr>
-                        <th class="name">Name</th>
-                        <th class="party">Party</th>
-                        <th class="idnumber">ID Number</th>
-                        <th class="votes">Votes</th>
-                        <th class="voteswithpartypct">% of Votes with the Party</th>
-                    </tr>
-                </thead>
-                <tbody id="tbodymost">
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
 
+        <!-- SCRIPTS -->
+        <script src="pro-congress-113-house.js">
+        </script>
+        <script src="house statistics.js">
+        </script>
+        <script src="house statistics.json">
+        </script>
 
-        <!-- FOOTER -->
-        <footer class="container-fluid bg-4 text-center">
-            <p class=footer> &#169 2019 &#9474 TGIF All Rights Reserved</p>
-        </footer>
-    </div>
-
-    <!-- SCRIPTS -->
-    <script src="pro-congress-113-house.js">
-    </script>
-    <script src="house statistics.js">
-    </script>
-    <script src="house statistics.json">
-    </script>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>

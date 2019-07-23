@@ -17,6 +17,11 @@ let dataStatHouse = {
             "party": "Independent",
             "numberOfReps": 0,
             "prcVotedWithParty": 0,
+        },
+        {
+            "party": "Total",
+            "numberOfReps": 0,
+            "prcVotedWithParty": 0,
         }
     ]
 };
@@ -47,10 +52,12 @@ for (let i = 0; i < membersParty.length; i++) {
 let repL = rep.length //Defining the length of every array 
 let demL = dem.length
 let indL = ind.length
+let membersL = members.length
 
-console.log(repL);
-console.log(demL);
-console.log(indL);
+console.log(repL)
+console.log(demL)
+console.log(indL)
+console.log(membersL)
 
 let housestatistics = dataStatHouse.housestatistics
 console.log(housestatistics)
@@ -59,6 +66,7 @@ let housestatisticsL = housestatistics.length
 housestatistics[0].numberOfReps = repL //Assigning the value to each element in the table
 housestatistics[1].numberOfReps = demL
 housestatistics[2].numberOfReps = indL
+housestatistics[3].numberOfReps = membersL
 
 //-------------------------------------------------------------
 //----- GETTING THE AVERAGES -----//
@@ -124,13 +132,25 @@ let avgDemRoundedUp = avgDem.toFixed(1);
 //Getting the summatory and the average of %voted with the party for I
 let sumInd = votesInd.reduce(getSum, 0);
 console.log(sumInd);
-let avgInd = sumInd / indL;
+let avgInd = sumInd / indL
+if (sumInd == 0) {
+    avgInd = "--"
+} 
 console.log(avgInd);
-let avgIndRoundedUp = avgInd.toFixed(1);
+
+//Getting the Avergae for the total
+console.log(membersL)
+let totalVotes = membersVotes.reduce(getSum, 0)
+console.log(totalVotes)
+let avgTotal = totalVotes / membersL
+console.log(avgTotal)
+let avgTotalRoundedUp = avgTotal.toFixed(1)
+console.log(avgTotalRoundedUp)
 
 housestatistics[0].prcVotedWithParty = avgRepRoundedUp; //Assigning the value to each element in the table
 housestatistics[1].prcVotedWithParty = avgDemRoundedUp;
-housestatistics[2].prcVotedWithParty = avgIndRoundedUp;
+housestatistics[2].prcVotedWithParty = avgInd;
+housestatistics[3].prcVotedWithParty = avgTotalRoundedUp;
 
 //----------------------------------------------------------------------------------------------------------------------
 // FEEDING THE HTML WITH THE DATA FOR SENATE AT GLANCE
@@ -169,7 +189,7 @@ buildTable(housestatistics);
 
 //var members = data.results[0].members; //Defining members array
 console.log(members)
-let membersL = members.length;
+console.log(membersL)
 
 //Defining (anonymus?) callback functions to sort arrays ascending (from < to >)
 let sortAscending = (arr, key) => {
@@ -206,13 +226,9 @@ for (i = 0; i < membersL; i++) {
         let firstName = members[i].first_name
         member.fullName = firstName + " " + midName + " " + lastName
 
-        member.party = members[i].party
-
-        member.number = members[i].id
-
         member.votes = members[i].total_votes
 
-        member.votesWithPartyPct = members[i].votes_with_party_pct
+        member.votesWithPartyPct = (members[i].votes_with_party_pct).toFixed(1)
 
         least.push(member);
     }
@@ -253,13 +269,9 @@ for (i = 0; i < membersL; i++) {
         let firstName = members[i].first_name
         member.fullName = firstName + " " + midName + " " + lastName
 
-        member.party = members[i].party
-
-        member.number = members[i].id
-
         member.votes = members[i].total_votes
 
-        member.votesWithPartyPct = members[i].votes_with_party_pct
+        member.votesWithPartyPct = (members[i].votes_with_party_pct).toFixed(1)
 
         most.push(member);
     }
@@ -293,7 +305,7 @@ for (i = 0; i < membersL; i++) {
 
         member.missedVotes = members[i].missed_votes
 
-        member.missedVotesPct = (members[i].missed_votes_pct).toFixed(2)
+        member.missedVotesPct = (members[i].missed_votes_pct).toFixed(1)
 
         highest.push(member);
     }
@@ -344,20 +356,12 @@ console.log("Object LOWEST" + " ", lowest); //10% Lowest Attendance represented 
                 rowLoy.appendChild(td1Loy)
 
                 let td2Loy = document.createElement("TD")
-                td2Loy.innerHTML = array[i].party
+                td2Loy.innerHTML = array[i].votes
                 rowLoy.appendChild(td2Loy)
 
                 let td3Loy = document.createElement("TD")
-                td3Loy.innerHTML = array[i].number
+                td3Loy.innerHTML = array[i].votesWithPartyPct
                 rowLoy.appendChild(td3Loy)
-
-                let td4Loy = document.createElement("TD")
-                td4Loy.innerHTML = array[i].votes
-                rowLoy.appendChild(td4Loy)
-
-                let td5Loy = document.createElement("TD")
-                td5Loy.innerHTML = array[i].votesWithPartyPct
-                rowLoy.appendChild(td5Loy)
 
                 tbodyLoy.appendChild(rowLoy)
             }
