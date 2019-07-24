@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab&display=swap" rel="stylesheet">
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,7 +13,10 @@
     <title>Congress 113 - House</title>
 </head>
 
+<!-- BODY -->
+
 <body>
+    <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
         <div class="row">
             <div class="col-sm-4" style="background-color:skyblue;">
@@ -27,16 +30,17 @@
             </div>
         </div>
 
+        <!-- NAV MENU -->
         <nav class="navbar navbar-left">
             <ul class="nav navbar-nav">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <li><a href="transparency-index.html">Home</a>
+                    <div class="col-sm-2">
+                        <li><a id="home" href="transparency-index.html">Home</a>
                         </li>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-3">
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="congress">Congress 113
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="liactive"><a href="house-data.html">House</a></li>
@@ -44,9 +48,29 @@
                             </ul>
                         </li>
                     </div>
+                    <div class="col-sm-4">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-data.html">House</a></li>
+                                <li><a href="senate-data.html">Senate</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                    <div class="col-sm-3">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-data.html">House</a></li>
+                                <li><a href="senate-data.html">Senate</a></li>
+                            </ul>
+                    </div>
                 </div>
             </ul>
         </nav>
+
         <br>
         <br>
         <header class="header1">
@@ -68,15 +92,15 @@
             <div class="checkboxes">
                 <label for="filterbyparty">Filter by Party:</label>
                 <label class="checkbox-inline"><input type="checkbox" name="party" id="rep" value="R"
-                        onchange="CreateTableFromJSON()"> Republican </label>
+                        onchange="helperFunction()"> Republican </label>
                 <label class="checkbox-inline"><input type="checkbox" name="party" id="dem" value="D"
-                        onchange="CreateTableFromJSON()"> Democrat</label>
+                        onchange="helperFunction()"> Democrat</label>
                 <label class="checkbox-inline"><input type="checkbox" name="party" id="indie" value="I"
-                        onchange="CreateTableFromJSON()"> Independent</label>
+                        onchange="helperFunction()"> Independent</label>
             </div>
             <div class="dropdownlist">
                 <label for="filterbystate">Filter by State:</label>
-                <select class="filter" id="filterbystate" name="states" onchange="CreateTableFromJSON()">
+                <select class="filter" id="filterbystate" name="states" onchange="helperFunction()">
                     <option value="">--Choose State--</option>
                 </select>
             </div>
@@ -92,7 +116,7 @@
                     <th class="votes">% Votes with the Party</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbodysenate-data">
             </tbody>
         </table>
         <input type="button" id="btnDelete" value="Delete Rows" onclick="DeleteRows()" />

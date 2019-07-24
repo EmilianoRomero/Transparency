@@ -147,7 +147,7 @@ console.log(avgTotalRoundedUp)
 statistics[0].prcVotedWithParty = avgRepRoundedUp; //Assigning the value to each element in the table
 statistics[1].prcVotedWithParty = avgDemRoundedUp;
 statistics[2].prcVotedWithParty = avgIndRoundedUp;
-statistics[2].prcVotedWithParty = avgTotalRoundedUp;
+statistics[3].prcVotedWithParty = avgTotalRoundedUp;
 
 //----------------------------------------------------------------------------------------------------------------------
 // FEEDING THE HTML WITH THE DATA FOR SENATE AT GLANCE
@@ -339,56 +339,71 @@ for (i = 0; i < membersL; i++) {
 }
 console.log("Object LOWEST" + " ", lowest); //10% Lowest Attendance represented by % of missed votes
 
+
+
 //Feeding the html table
-        function buildLoyaltyTable(array, bodyid) {
-
-            let tbodyLoy = document.getElementById(bodyid)
-            let arrayL = array.length
-
-            for (i = 0; i < arrayL; i++) {
-                let rowLoy = document.createElement("TR")
-
-                let td1Loy = document.createElement("TD")
-                td1Loy.innerHTML = array[i].fullName
-                rowLoy.appendChild(td1Loy)
-
-                let td2Loy = document.createElement("TD")
-                td2Loy.innerHTML = array[i].votes
-                rowLoy.appendChild(td2Loy)
-
-                let td3Loy = document.createElement("TD")
-                td3Loy.innerHTML = array[i].votesWithPartyPct
-                rowLoy.appendChild(td3Loy)
-
-                tbodyLoy.appendChild(rowLoy)
-            }
-        }
+function getPage() {
+    if (document.title.includes("Loyalty")) {
         buildLoyaltyTable(least, "tbodyleast")
         buildLoyaltyTable(most, "tbodymost")
+    } else {
+        buildAttendanceTable(highest, "tbodybottom")
+        buildAttendanceTable(lowest, "tbodytop")
+    }
+}
+getPage()
+
+function buildLoyaltyTable(array, bodyid) {
+    console.log(bodyid)
+    let tbodyLoy = document.getElementById(bodyid)
+    let arrayL = array.length
+    console.log(tbodyLoy)
+    for (i = 0; i < arrayL; i++) {
+        let rowLoy = document.createElement("TR")
+
+        let td1Loy = document.createElement("TD")
+        td1Loy.innerHTML = array[i].fullName.link(members[i].url)
+        rowLoy.appendChild(td1Loy)
+
+        let td2Loy = document.createElement("TD")
+        td2Loy.innerHTML = array[i].votes
+        rowLoy.appendChild(td2Loy)
+
+        let td3Loy = document.createElement("TD")
+        td3Loy.innerHTML = array[i].votesWithPartyPct
+        rowLoy.appendChild(td3Loy)
+
+        tbodyLoy.appendChild(rowLoy)
+    }
+    
+}
+
+
+
 
 //Feeding the html table
-        function buildAttendanceTable(array, bodyid) {
-            
-            let tbodyAtt = document.getElementById(bodyid)
-            let arrayL = array.length
 
-            for (i = 0; i < arrayL; i++) {
-                let rowAtt = document.createElement("TR")
-                
-                let td1Att = document.createElement("TD")
-                td1Att.innerHTML = array[i].fullName
-                rowAtt.appendChild(td1Att)
+function buildAttendanceTable(array, bodyid) {
 
-                let td2Att = document.createElement("TD")
-                td2Att.innerHTML = array[i].missedVotes
-                rowAtt.appendChild(td2Att)
+    let tbodyAtt = document.getElementById(bodyid)
+    let arrayL = array.length
 
-                let td3Att = document.createElement("TD")
-                td3Att.innerHTML = array[i].missedVotesPct
-                rowAtt.appendChild(td3Att)
+    for (i = 0; i < arrayL; i++) {
+        let rowAtt = document.createElement("TR")
 
-                tbodyAtt.appendChild(rowAtt)
-            }
-        }
-        buildAttendanceTable(highest, "bottom")
-        buildAttendanceTable(lowest, "top")
+        let td1Att = document.createElement("TD")
+        td1Att.innerHTML = array[i].fullName.link(members[i].url)
+        rowAtt.appendChild(td1Att)
+
+        let td2Att = document.createElement("TD")
+        td2Att.innerHTML = array[i].missedVotes
+        rowAtt.appendChild(td2Att)
+
+        let td3Att = document.createElement("TD")
+        td3Att.innerHTML = array[i].missedVotesPct
+        rowAtt.appendChild(td3Att)
+
+        tbodyAtt.appendChild(rowAtt)
+    }
+
+}
