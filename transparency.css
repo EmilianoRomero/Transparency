@@ -94,32 +94,6 @@ html {
   max-width: 100%;
 }
 
-/*.nav {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  justify-items: stretch;
-}
-
-#home {
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-
-#congress {
-  grid-column-start: 2;
-  grid-column-end: 3;
-}
-
-#attendance {
-  grid-column-start: 3;
-  grid-column-end: 4;
-}
-
-#loyalty{
-  grid-column-start: 4
-}*/
-
-
 #capitol {
   margin-left: 15px;
   margin-top: 15px;
@@ -139,5 +113,9 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.table {
+  text-align: center;
 }
 

@@ -59,8 +59,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-data.html">House</a></li>
-                                <li><a href="senate-data.html">Senate</a></li>
+                                <li><a href="house-attendance-statistics.html">House</a></li>
+                                <li><a href="senate-attendance-statistics.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -69,8 +69,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-data.html">House</a></li>
-                                <li><a href="senate-data.html">Senate</a></li>
+                                <li><a href="house-partyloyalty-statistics.html">House</a></li>
+                                <li><a href="senate-partyloyalty-statistics.html">Senate</a></li>
                             </ul>
                     </div>
                 </div>
@@ -136,20 +136,13 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src="pro-congress-113-senate.js">
+    <script src="pro-congress-113-house.js">
     </script>
-    <script src="senate-data.js">
+    <script src="house statistics.js">
     </script>
-    <!-- SCRIPT CLEAR TABLE-->
-    <script type="text/javascript">
-        function DeleteRows() {
-            var rowCount = table.rows.length;
-            for (var i = rowCount - 1; i > 0; i--) {
-                table.deleteRow(i);
-            }
-        }
-        var table = document.getElementById("senate-data");
+    <script src="statistics.json">
     </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

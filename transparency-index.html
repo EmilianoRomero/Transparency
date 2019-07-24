@@ -13,7 +13,10 @@
     <title>Congress 113 Home</title>
 </head>
 
+<!-- BODY -->
+
 <body>
+    <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
         <div class="row">
             <div class="col-sm-4" style="background-color:skyblue;">
@@ -27,15 +30,17 @@
             </div>
         </div>
 
+        <!-- NAV MENU -->
         <nav class="navbar navbar-left">
             <ul class="nav navbar-nav">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <li class="liactive"><a href="transparency-index.html">Home</a></li>
+                    <div class="col-sm-2">
+                        <li class="liactive"><a id="home" href="transparency-index.html">Home</a>
+                        </li>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-3">
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="congress">Congress 113
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="house-data.html">House</a></li>
@@ -43,9 +48,29 @@
                             </ul>
                         </li>
                     </div>
+                    <div class="col-sm-4">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-attendance-statistics.html">House</a></li>
+                                <li><a href="senate-attendance-statistics.html">Senate</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                    <div class="col-sm-3">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-partyloyalty-statistics.html">House</a></li>
+                                <li><a href="senate-partyloyalty-statistics.html">Senate</a></li>
+                            </ul>
+                    </div>
                 </div>
             </ul>
         </nav>
+
         <br>
         <br>
         <header class="header1">
@@ -131,8 +156,13 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src=index-data.js>
+    <script src="pro-congress-113-house.js">
     </script>
+    <script src="house statistics.js">
+    </script>
+    <script src="statistics.json">
+    </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

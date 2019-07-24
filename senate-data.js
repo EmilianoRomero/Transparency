@@ -130,3 +130,12 @@ function filterMembers() { //Filtro miembros por partido y por estado, y los emp
 function helperFunction() {
     filterMembers(members);
 }
+
+//CLEAR TABLE
+        function DeleteRows() {
+            var rowCount = table.rows.length;
+            for (var i = rowCount - 1; i > 0; i--) {
+                table.deleteRow(i);
+            }
+        }
+        var table = document.getElementById("senate-data");
