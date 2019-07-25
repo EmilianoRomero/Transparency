@@ -21,16 +21,15 @@ html {
   text-align: left;
   border: none;
   outline: none;
-  transition: 2.5 s;
+  transition: 0.4 s;
   }
 
+  
 .accordion:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   color: #adadad;
   float: right;
-  margin-right: 20px;
-  margin-top: 12px;
   }
   
 .active:after {
@@ -46,8 +45,9 @@ html {
 .panel {
   padding: 0 18px;
   background-color: transparent;
-  display: none;
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.2s ease-out;
   }
 
 .dropdown-menu.show {

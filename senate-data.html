@@ -20,7 +20,6 @@
 </head>
 
 <!-- BODY -->
-
 <body>
     <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
@@ -111,7 +110,6 @@
             </div>
         </div>
         <!-- TABLE -->
-        <div class="table">
             <table class="table table-bordered" id="senate-data">
                 <thead>
                     <tr>
@@ -125,9 +123,7 @@
                 <tbody id="tbodysenate-data">
                 </tbody>
             </table>
-            <input type="button" id="btnDelete" value="Clear Table" onclick="DeleteRows()">
-            </input>
-        </div>
+            <input type="button" id="btnDelete" value="Clear Table" onclick="DeleteRows()" />
         <br>
         <br>
         <!-- FOOTER -->
@@ -138,12 +134,13 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src="pro-congress-113-house.js">
+    <script src="main.js">
     </script>
-    <script src="house statistics.js">
+    <!-- COMMENTED TO START WORKING WITH AJAX <script src="pro-congress-113-house.js"> -->
     </script>
-    <script src="statistics.json">
+    <script src="senate-data.js">
     </script>
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

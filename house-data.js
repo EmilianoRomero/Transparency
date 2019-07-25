@@ -73,7 +73,7 @@ function createStateSelect(noDuplicates) {
     
     let select = document.getElementById("filterbystate")
         for (var i = 0; i < noDuplicates.length; i++) {
-        members.sort(function (a, b) {
+/*        members.sort(function (a, b) {
             if (a.state > b.state) {
                 return 1;
             }
@@ -82,7 +82,7 @@ function createStateSelect(noDuplicates) {
             }
             return 0; // a must be equal to b
         })
-        
+*/        
         let states = noDuplicates[i]
         var option = document.createElement("option")
         option.textContent = states

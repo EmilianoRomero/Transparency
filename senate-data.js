@@ -7,7 +7,7 @@
 // 01. TABLE id = senate-data
 //------------------------------
 
-let members = data.results[0].members;
+//let members = data.results[0].members;
 
 function CreateTableFromJSON(members) {
 
@@ -50,7 +50,7 @@ function CreateTableFromJSON(members) {
         tbody.appendChild(tr)
     }
 }
-CreateTableFromJSON(members);
+//CreateTableFromJSON(members);
 
 
 function removeDupl(members) {
