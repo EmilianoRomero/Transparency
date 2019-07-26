@@ -64,35 +64,25 @@ function removeDupl(members) {
 
     noDuplicates.sort()
     console.log(noDuplicates)
-
-    createStateSelect(noDuplicates);
 }
-removeDupl(members);
-
+//    createStateSelect(noDuplicates);
+//    removeDupl(members);
 
 function createStateSelect(noDuplicates) {
     
     let select = document.getElementById("filterbystate")
-        for (var i = 0; i < noDuplicates.length; i++) {
-        members.sort(function (a, b) {
-            if (a.state > b.state) {
-                return 1;
-            }
-            if (a.state < b.state) {
-                return -1;
-            }
-            return 0; // a must be equal to b
-        })
-        
+    
+
+    for (let i = 0; i < noDuplicates.length; i++) {
         let states = noDuplicates[i]
-        var option = document.createElement("option")
-        option.textContent = states
-        option.value = states
-        console.log(states)
-        select.appendChild(option)
+        let option = document.createElement("option")
+    option.textContent = states
+    option.value = states
+    console.log(states)
+    select.appendChild(option)
     }
 }
-//createStateSelect(states)
+//createStateSelect(noDuplicates)
 
 
 
@@ -127,15 +117,15 @@ function filterMembers() { //Filtro miembros por partido y por estado, y los emp
     selectedState.onchange = CreateTableFromJSON(filteredMembers)
 }
 
-function helperFunction() {
-    filterMembers(members);
-}
+//    function helperFunction() {
+//        filterMembers(members);
+//    }
 
 //CLEAR TABLE
-        function DeleteRows() {
-            var rowCount = table.rows.length;
-            for (var i = rowCount - 1; i > 0; i--) {
-                table.deleteRow(i);
-            }
-        }
-        var table = document.getElementById("senate-data");
+function DeleteRows() {
+    var rowCount = table.rows.length;
+    for (var i = rowCount - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+}
+var table = document.getElementById("senate-data");

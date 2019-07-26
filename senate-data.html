@@ -20,6 +20,7 @@
 </head>
 
 <!-- BODY -->
+
 <body>
     <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
@@ -95,12 +96,12 @@
         <div class="row" id="selectors">
             <div class="checkboxes">
                 <label for="filterbyparty">Filter by Party:</label>
-                <label class="checkbox-inline"><input type="checkbox" name="party" id="rep" value="R"
-                        onchange="helperFunction()"> Republican </label>
-                <label class="checkbox-inline"><input type="checkbox" name="party" id="dem" value="D"
-                        onchange="helperFunction()"> Democrat</label>
-                <label class="checkbox-inline"><input type="checkbox" name="party" id="indie" value="I"
-                        onchange="helperFunction()"> Independent</label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="rep" value="R">
+                    Republican </label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="dem" value="D">
+                    Democrat</label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="indie" value="I">
+                    Independent</label>
             </div>
             <div class="dropdownlist">
                 <label for="filterbystate">Filter by State:</label>
@@ -110,20 +111,20 @@
             </div>
         </div>
         <!-- TABLE -->
-            <table class="table table-bordered" id="senate-data">
-                <thead>
-                    <tr>
-                        <th class="name">Name</th>
-                        <th class="party">Party</th>
-                        <th class="seniority">Seniority</th>
-                        <th class="state">State</th>
-                        <th class="votes">% Votes with the Party</th>
-                    </tr>
-                </thead>
-                <tbody id="tbodysenate-data">
-                </tbody>
-            </table>
-            <input type="button" id="btnDelete" value="Clear Table" onclick="DeleteRows()" />
+        <table class="table table-bordered" id="senate-data">
+            <thead>
+                <tr>
+                    <th class="name">Name</th>
+                    <th class="party">Party</th>
+                    <th class="seniority">Seniority</th>
+                    <th class="state">State</th>
+                    <th class="votes">% Votes with the Party</th>
+                </tr>
+            </thead>
+            <tbody id="tbodysenate-data">
+            </tbody>
+        </table>
+        <input type="button" id="btnDelete" value="Clear Table" onclick="DeleteRows()" />
         <br>
         <br>
         <!-- FOOTER -->

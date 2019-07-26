@@ -31,12 +31,15 @@ function fetchingDataFromOnLineJSON(url) {
         .then(function (data) { //SHOULDN'T I ENTER THE FUNCTION HERE?
             console.log(data.results[0].members);
             let members = data.results[0].members;
-            //    display(members);
-            CreateTableFromJSON(members)
-
-
-
+            let noDuplicates = [];
+            CreateTableFromJSON(members);
+            removeDupl(members);
+            createStateSelect(noDuplicates);
             
+
+
+
+
         })
         .catch(function (error) {
             console.log(error);
