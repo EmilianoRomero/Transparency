@@ -35,7 +35,9 @@ function fetchingDataFromOnLineJSON(url) {
             CreateTableFromJSON(members);
             removeDupl(members);
             createStateSelect(noDuplicates);
-            
+            getInputsSelections();//doesn't work properly
+            filterMembers(checkedBoxesArray, selectedState);
+
 
 
 

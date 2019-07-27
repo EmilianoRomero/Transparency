@@ -81,20 +81,30 @@ function createStateSelect(noDuplicates) {
 }
 //createStateSelect(noDuplicates)
 
-function getInputsSelections () {
-//Inputs selection separated now from the original piece of code and then call to the filtering function
-//which will create the array based on the selections performed in the input
-//The checkboxes
-var checkedBoxes = document.querySelectorAll("input[name=party]:checked");
-checkedBoxes.addEventListener()
-var checkedBoxesArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
-//The Dropdown List
-var selectedState = document.getElementById("filterbystate").value;
-console.log(checkedBoxesArray)
-console.log(selectedState)
-//Feeding the filteredMembers f
-filterMembers (checkedBoxesArray, selectedState)
+//IS NOT WORKING PROPERLY
+function getInputsSelections() {
+    //Inputs selection separated now from the original piece of code and then call to the filtering function
+    //which will create the array based on the selections performed in the input
+    //The checkboxes
+    var checkedBoxes = document.querySelectorAll("input[name=party]:checked");
+    checkedBoxes.addEventListener(":checked", filterMembers);
+    var checkedBoxesArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+    //The Dropdown List
+    var selectedState = document.getElementById("filterbystate").value;
+    selectedState.addEventListener("value", filterMembers);
+    console.log(checkedBoxesArray)
+    console.log(selectedState)
+    //Feeding the filteredMembers f
+    filterMembers(checkedBoxesArray, selectedState)
 }
+
+//------
+//NOTES ABOUT THE LISTENER
+//.querySelectorAll() returns a list, and that list doesn't have an .addEventListener() method
+//.querySelector() instead, it returns the first matching element rather than a list. 
+//If there could be more than one checkbox would be necessary to iterate over the list 
+//to add a listener to each element in the list.
+//------
 
 //Filter function feeded by the selections of the check boxes and the selected state on the drop down menu
 function filterMembers(checkedBoxesArray, selectedState) { //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
@@ -119,17 +129,15 @@ function filterMembers(checkedBoxesArray, selectedState) { //Filtro miembros por
             }
         }
     }
-    /*
-    
-*/
+    buildFilteredMembersTable(filteredMembers)
     //   checkedBoxes.onchange = CreateTableFromJSON(filteredMembers)
     //    selectedState.onchange = CreateTableFromJSON(filteredMembers)
 }
-
+/*
 function helperFunction() {
     filterMembers(members);
 }
-
+*/
 //CLEAR TABLE
 function DeleteRows() {
     var rowCount = table.rows.length;
