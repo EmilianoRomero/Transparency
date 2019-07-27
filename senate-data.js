@@ -52,7 +52,7 @@ function CreateTableFromJSON(members) {
 }
 //CreateTableFromJSON(members);
 
-
+//Getting rid of the duplicated states
 function removeDupl(members) {
     let noDuplicates = [];
     members.forEach(function (member) {
@@ -61,65 +61,74 @@ function removeDupl(members) {
         }
     })
     console.log(noDuplicates)
-
     noDuplicates.sort()
     console.log(noDuplicates)
 }
 //    createStateSelect(noDuplicates);
 //    removeDupl(members);
 
+//Feeds the selector for the states from the array without duplicates
 function createStateSelect(noDuplicates) {
-    
     let select = document.getElementById("filterbystate")
-    
-
     for (let i = 0; i < noDuplicates.length; i++) {
         let states = noDuplicates[i]
         let option = document.createElement("option")
-    option.textContent = states
-    option.value = states
-    console.log(states)
-    select.appendChild(option)
+        option.textContent = states
+        option.value = states
+        console.log(states)
+        select.appendChild(option)
     }
 }
 //createStateSelect(noDuplicates)
 
+function getInputsSelections () {
+//Inputs selection separated now from the original piece of code and then call to the filtering function
+//which will create the array based on the selections performed in the input
+//The checkboxes
+var checkedBoxes = document.querySelectorAll("input[name=party]:checked");
+checkedBoxes.addEventListener()
+var checkedBoxesArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+//The Dropdown List
+var selectedState = document.getElementById("filterbystate").value;
+console.log(checkedBoxesArray)
+console.log(selectedState)
+//Feeding the filteredMembers f
+filterMembers (checkedBoxesArray, selectedState)
+}
 
-
-function filterMembers() { //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
-
-    var checkedBoxes = document.querySelectorAll("input[name=party]:checked");
-    var checkboxArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
-    var selectedState = document.getElementById("filterbystate").value; //DEFINES + LINKS OPTIONS OF THE DROPDOWN MENU
-    console.log(checkboxArray)
-    console.log(selectedState)
-
+//Filter function feeded by the selections of the check boxes and the selected state on the drop down menu
+function filterMembers(checkedBoxesArray, selectedState) { //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
+    //    var checkedBoxes = document.querySelectorAll("input[name=party]:checked").addEventListener()
+    //    var checkboxArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
     var filteredMembers = [];
 
     for (var i = 0; i < members.length; i++) {
-        if (checkboxArray.length == 0 && selectedState == "") {
+        if (checkedBoxesArray.length == 0 && selectedState == "") {
             filteredMembers = members
-        } else if (selectedState !== "" && checkboxArray.length == 0) {
+        } else if (selectedState !== "" && checkedBoxesArray.length == 0) {
             if (selectedState.includes(members[i].state)) {
                 filteredMembers.push(members[i])
             }
-        } else if (checkboxArray.length !== 0 && selectedState == "") {
-            if (checkboxArray.includes(members[i].party)) {
+        } else if (checkedBoxesArray.length !== 0 && selectedState == "") {
+            if (checkedBoxesArray.includes(members[i].party)) {
                 filteredMembers.push(members[i])
             }
         } else {
-            if (checkboxArray.includes(members[i].party) && selectedState.includes(members[i].state)) {
+            if (checkedBoxesArray.includes(members[i].party) && selectedState.includes(members[i].state)) {
                 filteredMembers.push(members[i])
             }
         }
     }
-    checkedBoxes.onchange = CreateTableFromJSON(filteredMembers)
-    selectedState.onchange = CreateTableFromJSON(filteredMembers)
+    /*
+    
+*/
+    //   checkedBoxes.onchange = CreateTableFromJSON(filteredMembers)
+    //    selectedState.onchange = CreateTableFromJSON(filteredMembers)
 }
 
-//    function helperFunction() {
-//        filterMembers(members);
-//    }
+function helperFunction() {
+    filterMembers(members);
+}
 
 //CLEAR TABLE
 function DeleteRows() {
