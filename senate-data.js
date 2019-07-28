@@ -81,17 +81,19 @@ function createStateSelect(noDuplicates) {
 }
 //createStateSelect(noDuplicates)
 
+
 //IS NOT WORKING PROPERLY
 function getInputsSelections() {
     //Inputs selection separated now from the original piece of code and then call to the filtering function
     //which will create the array based on the selections performed in the input
     //The checkboxes
-    var checkedBoxes = document.querySelectorAll("input[name=party]:checked");
-    checkedBoxes.addEventListener(":checked", filterMembers);
-    var checkedBoxesArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+    let checkedBoxes = document.querySelectorAll("input[name=party]:checked");
+    checkedBoxes.addEventListener(":checked", filterMembers,true); //cannot get what true or false implies -->*
+    let checkedBoxesArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+
     //The Dropdown List
-    var selectedState = document.getElementById("filterbystate").value;
-    selectedState.addEventListener("value", filterMembers);
+    let selectedState = document.getElementById("filterbystate").value;
+    selectedState.addEventListener("value", filterMembers, true); //*--> or even if they are necessary in this case
     console.log(checkedBoxesArray)
     console.log(selectedState)
     //Feeding the filteredMembers f
@@ -110,9 +112,9 @@ function getInputsSelections() {
 function filterMembers(checkedBoxesArray, selectedState) { //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
     //    var checkedBoxes = document.querySelectorAll("input[name=party]:checked").addEventListener()
     //    var checkboxArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
-    var filteredMembers = [];
+    let filteredMembers = [];
 
-    for (var i = 0; i < members.length; i++) {
+    for (let i = 0; i < members.length; i++) {
         if (checkedBoxesArray.length == 0 && selectedState == "") {
             filteredMembers = members
         } else if (selectedState !== "" && checkedBoxesArray.length == 0) {
@@ -129,7 +131,7 @@ function filterMembers(checkedBoxesArray, selectedState) { //Filtro miembros por
             }
         }
     }
-    buildFilteredMembersTable(filteredMembers)
+    //buildFilteredMembersTable(filteredMembers)
     //   checkedBoxes.onchange = CreateTableFromJSON(filteredMembers)
     //    selectedState.onchange = CreateTableFromJSON(filteredMembers)
 }
@@ -138,6 +140,8 @@ function helperFunction() {
     filterMembers(members);
 }
 */
+
+/*
 //CLEAR TABLE
 function DeleteRows() {
     var rowCount = table.rows.length;
@@ -146,3 +150,4 @@ function DeleteRows() {
     }
 }
 var table = document.getElementById("senate-data");
+*/

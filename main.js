@@ -32,13 +32,16 @@ function fetchingDataFromOnLineJSON(url) {
             console.log(data.results[0].members);
             let members = data.results[0].members;
             let noDuplicates = [];
-            CreateTableFromJSON(members);
-            removeDupl(members);
-            createStateSelect(noDuplicates);
-            getInputsSelections();//doesn't work properly
-            filterMembers(checkedBoxesArray, selectedState);
-
-
+            CreateTableFromJSON(members); //works
+            removeDupl(members); //works
+            createStateSelect(noDuplicates); //works
+            //var checkedBoxes = document.querySelectorAll("input[name=party]:checked");
+            //checkedBoxes.addEventListener(":checked", filterMembers);
+            //getInputsSelections(); //doesn't work properly
+            //filterMembers(checkedBoxesArray, selectedState);
+            //console.log(checkedBoxesArray)
+            //console.log(selectedState)
+            //buildFilteredMembersTable(filteredMembers)
 
 
 
