@@ -52,6 +52,7 @@ function CreateTableFromJSON(members) {
 }
 //CreateTableFromJSON(members);
 
+
 //Getting rid of the duplicated states
 function removeDupl(members) {
     let noDuplicates = [];
@@ -63,9 +64,9 @@ function removeDupl(members) {
     console.log(noDuplicates)
     noDuplicates.sort()
     console.log(noDuplicates)
+    createStateSelect(noDuplicates);
 }
-//    createStateSelect(noDuplicates);
-//    removeDupl(members);
+
 
 //Feeds the selector for the states from the array without duplicates
 function createStateSelect(noDuplicates) {
@@ -75,73 +76,73 @@ function createStateSelect(noDuplicates) {
         let option = document.createElement("option")
         option.textContent = states
         option.value = states
-        console.log(states)
         select.appendChild(option)
+        // getInputsSelections(members);
     }
 }
-//createStateSelect(noDuplicates)
 
-
-//IS NOT WORKING PROPERLY
-function getInputsSelections() {
-    //Inputs selection separated now from the original piece of code and then call to the filtering function
-    //which will create the array based on the selections performed in the input
+//Inputs selection separated now from the original piece of code and then call to the filtering function
+//which will create the array based on the selections performed in the input
+function getInputsSelections(members) {
     //The checkboxes
-    let checkedBoxes = document.querySelectorAll("input[name=party]:checked");
-    checkedBoxes.addEventListener(":checked", filterMembers,true); //cannot get what true or false implies -->*
-    let checkedBoxesArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+    let i;
+    let checkBoxes = document.querySelectorAll("input[name=party]");
+    let checkBoxesL = checkBoxes.length;
+    for (i = 0; i < checkBoxesL; i++) {
+        checkBoxes[i].addEventListener("change", function () {
+            valuesInput(members)
+        })
+    };
 
     //The Dropdown List
-    let selectedState = document.getElementById("filterbystate").value;
-    selectedState.addEventListener("value", filterMembers, true); //*--> or even if they are necessary in this case
-    console.log(checkedBoxesArray)
-    console.log(selectedState)
-    //Feeding the filteredMembers f
-    filterMembers(checkedBoxesArray, selectedState)
+    let selectedState = document.getElementById("filterbystate");
+    selectedState.addEventListener("change", function () {
+        valuesInput(members)
+    });
 }
 
-//------
-//NOTES ABOUT THE LISTENER
-//.querySelectorAll() returns a list, and that list doesn't have an .addEventListener() method
-//.querySelector() instead, it returns the first matching element rather than a list. 
-//If there could be more than one checkbox would be necessary to iterate over the list 
-//to add a listener to each element in the list.
-//------
+
+//Helper function (Why cannot call directly filterMembers?)
+function valuesInput(members) {
+    console.log("i am here")
+    let checkBoxes = document.querySelectorAll("input[name=party]:checked");
+    let checkedBoxesArray = Array.from(checkBoxes).map(checkbox => checkbox.value);
+    let selectedState = document.getElementById("filterbystate").value;
+    console.log(checkedBoxesArray, selectedState)
+    console.log(members)
+    filterMembers(members)
+};
+
 
 //Filter function feeded by the selections of the check boxes and the selected state on the drop down menu
-function filterMembers(checkedBoxesArray, selectedState) { //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
-    //    var checkedBoxes = document.querySelectorAll("input[name=party]:checked").addEventListener()
-    //    var checkboxArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+function filterMembers(checkedBoxesArray, selectedState, members) {
+    //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
     let filteredMembers = [];
+    let mL = members.length;
+    let cBA = checkedBoxesArray;
+    let cBAL = checkedBoxesArray.length;
 
-    for (let i = 0; i < members.length; i++) {
-        if (checkedBoxesArray.length == 0 && selectedState == "") {
+    for (let i = 0; i < mL; i++) {
+        if (cBAL == 0 && selectedState == "") {
             filteredMembers = members
-        } else if (selectedState !== "" && checkedBoxesArray.length == 0) {
+        } else if (selectedState !== "" && cBAL == 0) {
             if (selectedState.includes(members[i].state)) {
                 filteredMembers.push(members[i])
             }
-        } else if (checkedBoxesArray.length !== 0 && selectedState == "") {
-            if (checkedBoxesArray.includes(members[i].party)) {
+        } else if (cBAL !== 0 && selectedState == "") {
+            if (cBA.includes(members[i].party)) {
                 filteredMembers.push(members[i])
             }
         } else {
-            if (checkedBoxesArray.includes(members[i].party) && selectedState.includes(members[i].state)) {
+            if (cBA.includes(members[i].party) && selectedState.includes(members[i].state)) {
                 filteredMembers.push(members[i])
             }
         }
     }
     //buildFilteredMembersTable(filteredMembers)
-    //   checkedBoxes.onchange = CreateTableFromJSON(filteredMembers)
-    //    selectedState.onchange = CreateTableFromJSON(filteredMembers)
 }
-/*
-function helperFunction() {
-    filterMembers(members);
-}
-*/
 
-/*
+
 //CLEAR TABLE
 function DeleteRows() {
     var rowCount = table.rows.length;
@@ -150,4 +151,3 @@ function DeleteRows() {
     }
 }
 var table = document.getElementById("senate-data");
-*/
