@@ -7,9 +7,8 @@
 // 01. TABLE id = senate-data
 //------------------------------
 
-//let members = data.results[0].members;
 
-function CreateTableFromJSON(members) {
+function createTableFromJSON(members) {
 
     var tbody = document.getElementById("tbodysenate-data");
     tbody.innerHTML = "";
@@ -50,7 +49,6 @@ function CreateTableFromJSON(members) {
         tbody.appendChild(tr)
     }
 }
-//CreateTableFromJSON(members);
 
 
 //Getting rid of the duplicated states
@@ -77,7 +75,6 @@ function createStateSelect(noDuplicates) {
         option.textContent = states
         option.value = states
         select.appendChild(option)
-        // getInputsSelections(members);
     }
 }
 
@@ -137,12 +134,12 @@ function filterMembers(checkedBoxesArray, selectedState, members) {
             }
         }
     }
-    //buildFilteredMembersTable(filteredMembers)
+    createTableFromJSON(filteredMembers);
 }
 
 
 //CLEAR TABLE
-function DeleteRows() {
+function deleteRows() {
     var rowCount = table.rows.length;
     for (var i = rowCount - 1; i > 0; i--) {
         table.deleteRow(i);
