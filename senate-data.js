@@ -99,7 +99,7 @@ function getInputsValues(members) {
 //This new function collects the chosen values, the selected ones
 //Helper function (Why cannot call directly filterMembers?)
 function getInputsSelections(members) {
-    console.log("i am here")
+    //console.log("i am here")
     let checkBoxes = document.querySelectorAll("input[name=party]:checked");
     let checkedBoxesArray = Array.from(checkBoxes).map(checkbox => checkbox.value);
     let selectedState = document.getElementById("filterbystate").value;
