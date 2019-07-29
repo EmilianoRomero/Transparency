@@ -81,37 +81,35 @@ function createStateSelect(noDuplicates) {
     }
 }
 
+//This original functions provides the possible values for the inputs, not the selected ones
 //Inputs selection separated now from the original piece of code and then call to the filtering function
 //which will create the array based on the selections performed in the input
-function getInputsSelections(members) {
-    //The checkboxes
+function getInputsValues(members) {
     let i;
     let checkBoxes = document.querySelectorAll("input[name=party]");
     let checkBoxesL = checkBoxes.length;
     for (i = 0; i < checkBoxesL; i++) {
         checkBoxes[i].addEventListener("change", function () {
-            valuesInput(members)
+            getInputsSelections(members)
         })
-    };
-
-    //The Dropdown List
+    }
     let selectedState = document.getElementById("filterbystate");
     selectedState.addEventListener("change", function () {
-        valuesInput(members)
+        getInputsSelections(members)
     });
 }
 
-
+//This new function collects the chosen values, the selected ones
 //Helper function (Why cannot call directly filterMembers?)
-function valuesInput(members) {
+function getInputsSelections(members) {
     console.log("i am here")
     let checkBoxes = document.querySelectorAll("input[name=party]:checked");
     let checkedBoxesArray = Array.from(checkBoxes).map(checkbox => checkbox.value);
     let selectedState = document.getElementById("filterbystate").value;
     console.log(checkedBoxesArray, selectedState)
     console.log(members)
-    filterMembers(members)
-};
+    filterMembers(checkedBoxesArray, selectedState, members)
+}
 
 
 //Filter function feeded by the selections of the check boxes and the selected state on the drop down menu
