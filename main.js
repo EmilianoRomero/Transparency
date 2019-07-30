@@ -28,11 +28,11 @@ function fetchingDataFromOnLineJSON(url) {
         .then(function (data) {
             console.log(data.results[0].members);
             let members = data.results[0].members;
+            //------SENATE-DATA------//
             createTableFromJSON(members);
             removeDupl(members);
             getInputsValues(members);
             getInputsSelections(members);
-
         })
         .catch(function (error) {
             console.log(error);

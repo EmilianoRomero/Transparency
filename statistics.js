@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------------
 //FILE: statistics.js
-//LINKED TO: senate-attendance-statistics.html and senate-partyloyalty-statistics.html
+//LINKED TO: senate-attendance-statistics.html and senate-partyloyalty-statistics.html and fetch-senate-attendance.js
 //----------------------------------------------------------------------------------------------------------------
 let dataStat = {
     "statistics": [{
@@ -31,123 +31,111 @@ let dataStat = {
 // GETTING THE FIRST VALUES
 //----------------------------------------------------------------------------------------------------------------------
 
-let members = data.results[0].members; //Defining members array
-
-let membersParty = Array.from(members).map(prop => prop.party); //Mapping an array for party key
-console.log((membersParty).sort());
-
-let rep = []; //Defining the an empty array for every party
-let dem = [];
-let ind = [];
-for (let i = 0; i < membersParty.length; i++) {
-    if (membersParty[i] == "R") {
-        rep.push(membersParty[i]);
-    } else if (membersParty[i] == "D") {
-        dem.push(membersParty[i]);
-    } else {
-        ind.push(membersParty[i])
+//Mapping an array for party key
+function mapMembersParty(members) {
+    let membersParty = Array.from(members).map(prop => prop.party);
+    console.log((membersParty).sort());
+    separateByParty(membersParty)
+}
+//Generating an array for every party
+function separateByParty(membersParty) {
+    //Declaring the object statistics
+    let statistics = dataStat.statistics;
+    let membersPartyL = membersParty.length;
+    let rep = [];
+    let dem = [];
+    let ind = [];
+    //Filtering the mapped array for party depending on the party value
+    for (let i = 0; i < membersPartyL; i++) {
+        if (membersParty[i] == "R") {
+            rep.push(membersParty[i]);
+        } else if (membersParty[i] == "D") {
+            dem.push(membersParty[i]);
+        } else {
+            ind.push(membersParty[i])
+        };
     };
-}; //Filtering the mapped array for party depending on the party value
+    //Defining the length of every array 
+    let repL = rep.length
+    let demL = dem.length
+    let indL = ind.length
 
-let repL = rep.length //Defining the length of every array 
-let demL = dem.length
-let indL = ind.length
-let membersL = members.length
-
-console.log(repL)
-console.log(demL)
-console.log(indL)
-console.log(membersL)
-
-let statistics = dataStat.statistics
-console.log(statistics)
-let statisticsL = statistics.length
-
-statistics[0].numberOfReps = repL //Assigning the value to each element in the table
-statistics[1].numberOfReps = demL
-statistics[2].numberOfReps = indL
-statistics[3].numberOfReps = membersL
+    //Assigning the value to each element in the table
+    statistics[0].numberOfReps = repL
+    statistics[1].numberOfReps = demL
+    statistics[2].numberOfReps = indL
+    statistics[3].numberOfReps = membersPartyL
+    console.log(repL)
+    console.log(demL)
+    console.log(indL)
+    console.log(membersPartyL)
+}
 
 //-------------------------------------------------------------
 //----- GETTING THE AVERAGES -----//
 //-------------------------------------------------------------
 
-let membersVotes = Array.from(members).map(prop => prop.votes_with_party_pct); //mapping the array for the votes
-console.log(membersVotes);
-
-//mapping the array for the votes pivoting on the R as fixed variable
-let votesPartyRep = rep.map((p, i) => {
-    if (p == "R");
-    return {
-        rep: p,
-        votes: membersVotes[i]
-    }
-});
-console.log(votesPartyRep);
-
-let votesRep = Array.from(votesPartyRep).map(prop => prop.votes);
-console.log(votesRep);
-
-//mapping the array for the votes pivoting on the D as fixed variable
-let votesPartyDem = dem.map((p, i) => {
-    if (p == "D");
-    return {
-        dem: p,
-        votes: membersVotes[i]
-    }
-});
-console.log(votesPartyDem);
-
-let votesDem = Array.from(votesPartyDem).map(prop => prop.votes);
-console.log(votesDem);
-
-//mapping the array for the votes pivoting on the I as fixed variable
-let votesPartyInd = ind.map((p, i) => {
-    if (p == "I");
-    return {
-        ind: p,
-        votes: membersVotes[i]
-    }
-});
-console.log(votesPartyInd);
-let votesInd = Array.from(votesPartyInd).map(prop => prop.votes);
-console.log(votesInd);
-
-//Function summatory
-function getSum(total, num) {
-    return total + Math.round(num);
+//mapping the array for the votes
+function mapMembersVotes(members) {
+    let membersVotes = Array.from(members).map(prop => prop.votes_with_party_pct);
+    console.log(membersVotes);
+    separateVotesByParty(membersVotes, members)
 }
-//Getting the summatory and the average of %voted with the party for R
-let sumRep = votesRep.reduce(getSum, 0)
-console.log(sumRep)
-let avgRep = sumRep / repL
-console.log(avgRep)
-let avgRepRoundedUp = avgRep.toFixed(1);
-//Getting the summatory and the average of %voted with the party for D
-let sumDem = votesDem.reduce(getSum, 0);
-console.log(sumDem);
-let avgDem = sumDem / demL;
-console.log(avgDem);
-let avgDemRoundedUp = avgDem.toFixed(1);
-//Getting the summatory and the average of %voted with the party for I
-let sumInd = votesInd.reduce(getSum, 0);
-console.log(sumInd);
-let avgInd = sumInd / indL;
-console.log(avgInd);
-let avgIndRoundedUp = avgInd.toFixed(1);
-//Getting the Avergae for the total
-console.log(membersL)
-let totalVotes = membersVotes.reduce(getSum, 0)
-console.log(totalVotes)
-let avgTotal = totalVotes / membersL
-console.log(avgTotal)
-let avgTotalRoundedUp = avgTotal.toFixed(1)
-console.log(avgTotalRoundedUp)
+//This function is new. Was generated during the fetching process and replaces the three originally used
+function separateVotesByParty(membersVotes, members) {
 
-statistics[0].prcVotedWithParty = avgRepRoundedUp; //Assigning the value to each element in the table
-statistics[1].prcVotedWithParty = avgDemRoundedUp;
-statistics[2].prcVotedWithParty = avgIndRoundedUp;
-statistics[3].prcVotedWithParty = avgTotalRoundedUp;
+    let membersVotesL = membersVotes.length;
+    let votesPartyRep = [];
+    let votesPartyDem = [];
+    let votesPartyInd = [];
+    //Filtering the mapped array for party depending on the party value
+    for (let i = 0; i < membersVotesL; i++) {
+        if (members[i].party == "R") {
+            votesPartyRep.push(membersVotes[i]);
+        } else if (members[i].party == "D") {
+            votesPartyDem.push(membersVotes[i]);
+        } else {
+            votesPartyInd.push(membersVotes[i])
+        };
+    };
+    console.log(votesPartyRep)
+    console.log(votesPartyDem)
+    console.log(votesPartyInd)
+
+    //Summatory
+    function getSum(total, num) {
+        return total + Math.round(num);
+    }
+    //Average
+    function average(array) {
+        //let avgRoundedUp = 
+        return ((array.reduce(getSum, 0)) / (array.length)).toFixed(1);
+        //console.log(avgRoundedUp)
+    };
+    //Applying the function to the votes of every Party
+    console.log(average(votesPartyRep))
+    console.log(average(votesPartyDem))
+    console.log(average(votesPartyInd))
+    console.log(average(membersVotes))
+
+    //Defining the values to be sent to the table
+    let avgVotesRep = average(votesPartyRep);
+    let avgVotesDem = average(votesPartyDem);
+    let avgVotesInd = average(votesPartyInd);
+    let avgVotesMem = average(membersVotes);
+
+    //Assigning the value to each element in the table
+    //Declaring the object statistics
+    let statistics = dataStat.statistics;
+    statistics[0].prcVotedWithParty = avgVotesRep; //Assigning the value to each element in the table
+    statistics[1].prcVotedWithParty = avgVotesDem;
+    statistics[2].prcVotedWithParty = avgVotesInd;
+    statistics[3].prcVotedWithParty = avgVotesMem;
+    console.log(avgVotesRep)
+    console.log(avgVotesDem)
+    console.log(avgVotesInd)
+    console.log(avgVotesMem)
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 // FEEDING THE HTML WITH THE DATA FOR SENATE AT GLANCE
@@ -156,7 +144,7 @@ statistics[3].prcVotedWithParty = avgTotalRoundedUp;
 let tbodyGlance = document.getElementById("glance")
 
 function buildTable(statistics) {
-
+    let statisticsL = statistics.length;
     for (i = 0; i < statisticsL; i++) {
         let rowGlance = document.createElement("TR")
 
@@ -178,167 +166,154 @@ function buildTable(statistics) {
         tbodyGlance.appendChild(rowGlance)
     }
 }
-buildTable(statistics);
 
 //----------------------------------------------------------------------------------------------------------------------
 // LOYALTY // % VOTES WITH PARTY
 //----------------------------------------------------------------------------------------------------------------------
 
-//var members = data.results[0].members; //Defining members array
-console.log(members)
-console.log(membersL)
-
-//Defining (anonymus?) callback functions to sort arrays ascending (from < to >)
+//Defining function to sort arrays ascending (from < to >)
 let sortAscending = (arr, key) => {
     return arr.sort((a, b) => {
         return a[key] - b[key];
     });
 };
-
-//sorting the array based on votes_with_party_pct values from lowest to highest values
-console.log(sortAscending(members, "votes_with_party_pct"));
-
-//Defining the condition of exclusion for the minimum
-let conditionMin = 0.1 * membersL //destination array must have 10% values (n) of the original array
-console.log(conditionMin) //n Members that belong to the 10% of members who least voted with the party
-let conditionMinRound = Math.round(conditionMin) //rounding the results
-console.log(conditionMinRound) //Integer of Members that belong to the 10% of members who least voted with the party
-let iMin = conditionMinRound - 1 //substracting in order to get i (zero based) instead of n (1 based)
-console.log(iMin); //i elements that belong to the 10% of members who least voted with the party
-
 //GETTING THE VALUES TO FEED LATER THE TABLE
 //Defining the new array (destination array) for the minimum.
-let least = []
-let leastL = least.length
+function valuesLeastTable(members) {
+    let membersL = members.length;
+    let iExclusion = (Math.round(0.1 * membersL) - 1);
+    console.log(iExclusion)
+    let least = []
 
-for (i = 0; i < membersL; i++) {
-    if (members[i].votes_with_party_pct <= members[iMin].votes_with_party_pct) {
-        let member = {}
-        let midName = ""
+    for (i = 0; i < membersL; i++) {
+        if (members[i].votes_with_party_pct <= members[iExclusion].votes_with_party_pct) {
+            let member = {}
+            let midName = ""
 
-        if (members[i].middle_name != null) {
-            midName = members[i].middle_name;
+            if (members[i].middle_name != null) {
+                midName = members[i].middle_name;
+            }
+            let lastName = members[i].last_name
+            let firstName = members[i].first_name
+            member.fullName = firstName + " " + midName + " " + lastName
+
+            member.votes = members[i].total_votes
+
+            member.votesWithPartyPct = (members[i].votes_with_party_pct).toFixed(1)
+
+            least.push(member);
         }
-        let lastName = members[i].last_name
-        let firstName = members[i].first_name
-        member.fullName = firstName + " " + midName + " " + lastName
+    };
+    console.log("Object LEAST" + " ", least);
+    //buildLoyaltyTable
+    //getPage(least)
+}
 
-        member.votes = members[i].total_votes
-
-        member.votesWithPartyPct = (members[i].votes_with_party_pct).toFixed(1)
-
-        least.push(member);
-    }
-};
-console.log("Object LEAST" + " ", least);
-
-//Defining (anonymus?) callback functions to sort arrays descending (from > to <)
+//Defining the function to sort arrays descending (from > to <)
 let sortDescending = (arr, key) => {
     return arr.sort((a, b) => {
         return b[key] - a[key];
     });
 };
-//sorting the array based on votes_with_party_pct values from lowest to highest values
-console.log(sortDescending(members, "votes_with_party_pct"));
-
-//Defining the condition of exclusion for the minimum
-let conditionMax = 0.1 * membersL; //destination array must have 10% values (n) of the original array
-console.log(conditionMax); //n Members that belong to the 10% of members who most voted with the party
-let conditionMaxRound = Math.round(conditionMax); //rounding the results
-console.log(conditionMaxRound); //Integer of Members that belong to the 10% of members who most voted with the party
-let iMax = conditionMaxRound - 1; //substracting in order to get i (zero based) instead of n (1 based)
-console.log(iMax); //i elements that belong to the 10% of members who most voted with the party
-
+//GETTING THE VALUES TO FEED LATER THE TABLE
 //Defining the new array (destination array) for the maximum
-let most = []
-let mostL = most.length
+function valuesMostTable(members) {
+    let membersL = members.length;
+    let iExclusion = (Math.round(0.1 * membersL) - 1);
+    console.log(iExclusion)
+    let most = []
 
-for (i = 0; i < membersL; i++) {
-    if (members[i].votes_with_party_pct >= members[iMax].votes_with_party_pct) {
+    for (i = 0; i < membersL; i++) {
+        if (members[i].votes_with_party_pct >= members[iExclusion].votes_with_party_pct) {
 
-        let member = {}
-        let midName = ""
+            let member = {}
+            let midName = ""
 
-        if (members[i].middle_name != null) {
-            midName = members[i].middle_name;
+            if (members[i].middle_name != null) {
+                midName = members[i].middle_name;
+            }
+            let lastName = members[i].last_name
+            let firstName = members[i].first_name
+            member.fullName = firstName + " " + midName + " " + lastName
+
+            member.votes = members[i].total_votes
+
+            member.votesWithPartyPct = (members[i].votes_with_party_pct).toFixed(1)
+
+            most.push(member);
         }
-        let lastName = members[i].last_name
-        let firstName = members[i].first_name
-        member.fullName = firstName + " " + midName + " " + lastName
-
-        member.votes = members[i].total_votes
-
-        member.votesWithPartyPct = (members[i].votes_with_party_pct).toFixed(1)
-
-        most.push(member);
     }
+    console.log("Object MOST" + " ", most); //10% Highest Participation with party represented by % of votes with the party
+//buildLoyaltyTable
+//getPage(most)
 };
-console.log("Object MOST" + " ", most); //10% Highest Participation with party represented by % of votes with the party
-
-////////////////////ACA ESTABA LA CREACION DE LA TABLA LOYALTY
 
 //----------------------------------------------------------------------------------------------------------------------
 // ATTENDANCE // % MISSED VOTES
 //----------------------------------------------------------------------------------------------------------------------
 
-//sorting the array based on missed_votes_pct values from lowest to highest values
-console.log(sortAscending(members, "missed_votes_pct"));
-
+//GETTING THE VALUES TO FEED LATER THE TABLE
 //Defining the new array (destination array) for the minimum. Highest Attendance --> lowestmissed_votes_pct
-let highest = []
-let highestL = highest.length
+function valuesHighestAttendanceTable(members) {
+    let membersL = members.length;
+    let iExclusion = (Math.round(0.1 * membersL) - 1);
+    console.log(iExclusion)
+    let highest = []
 
-for (i = 0; i < membersL; i++) {
-    if (members[i].missed_votes_pct <= members[iMin].missed_votes_pct) {
-        let member = {}
-        let midName = ""
+    for (i = 0; i < membersL; i++) {
+        if (members[i].missed_votes_pct <= members[iExclusion].missed_votes_pct) {
+            let member = {}
+            let midName = ""
 
-        if (members[i].middle_name != null) {
-            midName = members[i].middle_name;
+            if (members[i].middle_name != null) {
+                midName = members[i].middle_name;
+            }
+            let lastName = members[i].last_name
+            let firstName = members[i].first_name
+            member.fullName = firstName + " " + midName + " " + lastName
+
+            member.missedVotes = members[i].missed_votes
+
+            member.missedVotesPct = (members[i].missed_votes_pct).toFixed(2)
+
+            highest.push(member);
         }
-        let lastName = members[i].last_name
-        let firstName = members[i].first_name
-        member.fullName = firstName + " " + midName + " " + lastName
-
-        member.missedVotes = members[i].missed_votes
-
-        member.missedVotesPct = (members[i].missed_votes_pct).toFixed(2)
-
-        highest.push(member);
     }
-}
-console.log("Object HIGHEST" + " ", highest); //10% Highest Attendance represented by % of missed votes:
-
-//sorting the array based on missed_votes_pct values from highest to lowest values
-console.log(sortDescending(members, "missed_votes_pct"));
+    console.log("Object HIGHEST" + " ", highest); //10% Highest Attendance represented by % of missed votes:
+    //buildAttendanceTable getPage(highest)
+};
 
 //Defining the new array (destination array) for the minimum 
 //and creating an empty object to add the keys of interest. 
-//Highest Attendance --> lowestmissed_votes_pct
-let lowest = []
-let lowestL = lowest.length
+//Lowest Attendance --> highestmissed_votes_pct
+function valuesLowestAttendanceTable(members) {
+    let membersL = members.length;
+    let iExclusion = (Math.round(0.1 * membersL) - 1);
+    console.log(iExclusion)
+    let lowest = []
 
-for (i = 0; i < membersL; i++) {
-    if (members[i].missed_votes_pct >= members[iMin].missed_votes_pct) {
-        let member = {}
-        let midName = ""
+    for (i = 0; i < membersL; i++) {
+        if (members[i].missed_votes_pct >= members[iExclusion].missed_votes_pct) {
+            let member = {}
+            let midName = ""
 
-        if (members[i].middle_name != null) {
-            midName = members[i].middle_name;
+            if (members[i].middle_name != null) {
+                midName = members[i].middle_name;
+            }
+            let lastName = members[i].last_name
+            let firstName = members[i].first_name
+            member.fullName = firstName + " " + midName + " " + lastName
+
+            member.missedVotes = members[i].missed_votes
+
+            member.missedVotesPct = (members[i].missed_votes_pct).toFixed(1)
+
+            lowest.push(member);
         }
-        let lastName = members[i].last_name
-        let firstName = members[i].first_name
-        member.fullName = firstName + " " + midName + " " + lastName
-
-        member.missedVotes = members[i].missed_votes
-
-        member.missedVotesPct = (members[i].missed_votes_pct).toFixed(1)
-
-        lowest.push(member);
     }
-}
-console.log("Object LOWEST" + " ", lowest); //10% Lowest Attendance represented by % of missed votes
-
+    console.log("Object LOWEST" + " ", lowest); //10% Lowest Attendance represented by % of missed votes
+    //buildAttendanceTable getPage(lowest)
+};
 
 
 //Feeding the html table
@@ -375,7 +350,7 @@ function buildLoyaltyTable(array, bodyid) {
 
         tbodyLoy.appendChild(rowLoy)
     }
-    
+
 }
 
 
@@ -405,5 +380,4 @@ function buildAttendanceTable(array, bodyid) {
 
         tbodyAtt.appendChild(rowAtt)
     }
-
 }

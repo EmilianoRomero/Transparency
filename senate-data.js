@@ -140,9 +140,9 @@ function filterMembers(checkedBoxesArray, selectedState, members) {
 
 //CLEAR TABLE
 function deleteRows() {
-    var rowCount = table.rows.length;
-    for (var i = rowCount - 1; i > 0; i--) {
+    let rowCount = table.rows.length;
+    for (let i = rowCount - 1; i > 0; i--) {
         table.deleteRow(i);
     }
 }
-var table = document.getElementById("senate-data");
+let table = document.getElementById("senate-data");
