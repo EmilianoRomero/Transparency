@@ -168,7 +168,7 @@ function buildTable(statistics) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-// LOYALTY // % VOTES WITH PARTY
+// FEEDING LOYALTY // % VOTES WITH PARTY
 //----------------------------------------------------------------------------------------------------------------------
 
 //Defining function to sort arrays ascending (from < to >)
@@ -177,13 +177,14 @@ let sortAscending = (arr, key) => {
         return a[key] - b[key];
     });
 };
-//GETTING THE VALUES TO FEED LATER THE TABLE
+//GETTING THE VALUES TO FEED LATER THE LOYALTY TABLE
 //Defining the new array (destination array) for the minimum.
-function valuesLeastTable(members) {
+function feedsLeastTable(members) {
     let membersL = members.length;
     let iExclusion = (Math.round(0.1 * membersL) - 1);
     console.log(iExclusion)
     let least = []
+    var i
 
     for (i = 0; i < membersL; i++) {
         if (members[i].votes_with_party_pct <= members[iExclusion].votes_with_party_pct) {
@@ -203,11 +204,10 @@ function valuesLeastTable(members) {
 
             least.push(member);
         }
-    };
+    }
     console.log("Object LEAST" + " ", least);
-    //buildLoyaltyTable
-    //getPage(least)
-}
+    buildLoyaltyTable(least, "tbodyleast")
+};
 
 //Defining the function to sort arrays descending (from > to <)
 let sortDescending = (arr, key) => {
@@ -215,13 +215,14 @@ let sortDescending = (arr, key) => {
         return b[key] - a[key];
     });
 };
-//GETTING THE VALUES TO FEED LATER THE TABLE
+//GETTING THE VALUES TO FEED THE LOYALTY TABLE LATER 
 //Defining the new array (destination array) for the maximum
-function valuesMostTable(members) {
+function feedsMostTable(members) {
     let membersL = members.length;
     let iExclusion = (Math.round(0.1 * membersL) - 1);
     console.log(iExclusion)
     let most = []
+    var i
 
     for (i = 0; i < membersL; i++) {
         if (members[i].votes_with_party_pct >= members[iExclusion].votes_with_party_pct) {
@@ -243,22 +244,22 @@ function valuesMostTable(members) {
             most.push(member);
         }
     }
-    console.log("Object MOST" + " ", most); //10% Highest Participation with party represented by % of votes with the party
-//buildLoyaltyTable
-//getPage(most)
+    console.log("Object MOST" + " ", most); //10% Highest Participation represented by % of votes with the party
+    buildLoyaltyTable(most, "tbodymost")
 };
 
 //----------------------------------------------------------------------------------------------------------------------
-// ATTENDANCE // % MISSED VOTES
+// FEEDING ATTENDANCE // % MISSED VOTES
 //----------------------------------------------------------------------------------------------------------------------
 
-//GETTING THE VALUES TO FEED LATER THE TABLE
+//GETTING THE VALUES TO FEED THE TABLE LATER 
 //Defining the new array (destination array) for the minimum. Highest Attendance --> lowestmissed_votes_pct
-function valuesHighestAttendanceTable(members) {
+function feedsHighestAttendanceTable(members) {
     let membersL = members.length;
     let iExclusion = (Math.round(0.1 * membersL) - 1);
     console.log(iExclusion)
-    let highest = []
+    let lowest = []
+    var i
 
     for (i = 0; i < membersL; i++) {
         if (members[i].missed_votes_pct <= members[iExclusion].missed_votes_pct) {
@@ -276,21 +277,22 @@ function valuesHighestAttendanceTable(members) {
 
             member.missedVotesPct = (members[i].missed_votes_pct).toFixed(2)
 
-            highest.push(member);
+            lowest.push(member);
         }
     }
-    console.log("Object HIGHEST" + " ", highest); //10% Highest Attendance represented by % of missed votes:
-    //buildAttendanceTable getPage(highest)
+    console.log("Object LOWEST" + " ", lowest); //10% Highest Attendance represented by lowest % of missed votes
+    buildAttendanceTable(lowest, "tbodytop")
 };
 
 //Defining the new array (destination array) for the minimum 
 //and creating an empty object to add the keys of interest. 
 //Lowest Attendance --> highestmissed_votes_pct
-function valuesLowestAttendanceTable(members) {
+function feedsLowestAttendanceTable(members) {
     let membersL = members.length;
     let iExclusion = (Math.round(0.1 * membersL) - 1);
     console.log(iExclusion)
-    let lowest = []
+    let highest = []
+    var i
 
     for (i = 0; i < membersL; i++) {
         if (members[i].missed_votes_pct >= members[iExclusion].missed_votes_pct) {
@@ -308,36 +310,29 @@ function valuesLowestAttendanceTable(members) {
 
             member.missedVotesPct = (members[i].missed_votes_pct).toFixed(1)
 
-            lowest.push(member);
+            highest.push(member);
         }
     }
-    console.log("Object LOWEST" + " ", lowest); //10% Lowest Attendance represented by % of missed votes
-    //buildAttendanceTable getPage(lowest)
+    console.log("Object HIGHEST" + " ", highest); //10% Lowest Attendance represented by highest % of missed votes
+    buildAttendanceTable(highest, "tbodybottom")
 };
 
+//----------------------------------------------------------------------------------------------------------------------
+// CREATING LOYALTY & ATTENDANCE TABLES //
+//----------------------------------------------------------------------------------------------------------------------
 
-//Feeding the html table
-function getPage() {
-    if (document.title.includes("Loyalty")) {
-        buildLoyaltyTable(least, "tbodyleast")
-        buildLoyaltyTable(most, "tbodymost")
-    } else {
-        buildAttendanceTable(highest, "tbodybottom")
-        buildAttendanceTable(lowest, "tbodytop")
-    }
-}
-getPage()
-
+//Building the html Loyalty Table
 function buildLoyaltyTable(array, bodyid) {
-    console.log(bodyid)
     let tbodyLoy = document.getElementById(bodyid)
-    let arrayL = array.length
-    console.log(tbodyLoy)
+    var arrayL = array.length
+    var i
+
     for (i = 0; i < arrayL; i++) {
+
         let rowLoy = document.createElement("TR")
 
         let td1Loy = document.createElement("TD")
-        td1Loy.innerHTML = array[i].fullName.link(members[i].url)
+        td1Loy.innerHTML = array[i].fullName.link(array[i].url)
         rowLoy.appendChild(td1Loy)
 
         let td2Loy = document.createElement("TD")
@@ -350,24 +345,20 @@ function buildLoyaltyTable(array, bodyid) {
 
         tbodyLoy.appendChild(rowLoy)
     }
-
 }
 
-
-
-
-//Feeding the html table
-
+//Building the html Attendance Table
 function buildAttendanceTable(array, bodyid) {
-
     let tbodyAtt = document.getElementById(bodyid)
-    let arrayL = array.length
+    var arrayL = array.length
+    var i
 
     for (i = 0; i < arrayL; i++) {
+
         let rowAtt = document.createElement("TR")
 
         let td1Att = document.createElement("TD")
-        td1Att.innerHTML = array[i].fullName.link(members[i].url)
+        td1Att.innerHTML = array[i].fullName.link(array[i].url)
         rowAtt.appendChild(td1Att)
 
         let td2Att = document.createElement("TD")
