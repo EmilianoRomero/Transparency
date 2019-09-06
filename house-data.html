@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="transparency.css">
-    <title>Congress 113 - House</title>
+    <title>Congress 113 House</title>
 </head>
 
 <!-- BODY -->
@@ -18,14 +18,14 @@
 <body>
     <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4" style="background-color:skyblue;">
+        <div class="row" id="banner" style="background-color:skyblue;">
+            <div class="col-sm-4">
                 <img class="img-responsive" id="capitol" src="transparency logo.png" alt="logo">
             </div>
-            <div class="col-sm-6" style="background-color:skyblue;">
+            <div class="col-sm-6">
                 <p class="contact">Contact Us</p>
             </div>
-            <div class="col-sm-2" style="background-color:skyblue;">
+            <div class="col-sm-2">
                 <a href="mailto:info@tgif.net"><img class="img-responsive" id="envelope" src="icon2.png"></img></a>
             </div>
         </div>
@@ -33,7 +33,7 @@
         <!-- NAV MENU -->
         <nav class="navbar navbar-left">
             <ul class="nav navbar-nav">
-                <div class="row">
+                <div class="row" id="navbar">
                     <div class="col-sm-2">
                         <li><a id="home" href="transparency-index.html">Home</a>
                         </li>
@@ -43,8 +43,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="congress">Congress 113
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li class="liactive"><a href="house-data.html">House</a></li>
-                                <li><a href="senate-data.html">Senate</a></li>
+                                <li class="liactive" id="ddm"><a href="house-data.html">House</a></li>
+                                <li id="ddm"><a href="senate-data.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -53,8 +53,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-attendance-statistics.html">House</a></li>
-                                <li><a href="senate-attendance-statistics.html">Senate</a></li>
+                                <li id="ddm"><a href="house-attendance-statistics.html">House</a></li>
+                                <li id="ddm"><a href="senate-attendance-statistics.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -63,8 +63,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-partyloyalty-statistics.html">House</a></li>
-                                <li><a href="senate-partyloyalty-statistics.html">Senate</a></li>
+                                <li id="ddm"><a href="house-partyloyalty-statistics.html">House</a></li>
+                                <li id="ddm"><a href="senate-partyloyalty-statistics.html">Senate</a></li>
                             </ul>
                     </div>
                 </div>
@@ -91,16 +91,16 @@
         <div class="row" id="selectors">
             <div class="checkboxes">
                 <label for="filterbyparty">Filter by Party:</label>
-                <label class="checkbox-inline"><input type="checkbox" name="party" id="rep" value="R"
-                        onchange="helperFunction()"> Republican </label>
-                <label class="checkbox-inline"><input type="checkbox" name="party" id="dem" value="D"
-                        onchange="helperFunction()"> Democrat</label>
-                <label class="checkbox-inline"><input type="checkbox" name="party" id="indie" value="I"
-                        onchange="helperFunction()"> Independent</label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="rep" value="R">
+                    Republican </label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="dem" value="D">
+                    Democrat</label>
+                <label class="checkbox-inline"><input type="checkbox" name="party" id="indie" value="I">
+                    Independent</label>
             </div>
             <div class="dropdownlist">
                 <label for="filterbystate">Filter by State:</label>
-                <select class="filter" id="filterbystate" name="states" onchange="helperFunction()">
+                <select class="filter" id="filterbystate" name="states">
                     <option value="">--Choose State--</option>
                 </select>
             </div>
@@ -116,10 +116,10 @@
                     <th class="votes">% Votes with the Party</th>
                 </tr>
             </thead>
-            <tbody id="tbodysenate-data">
+            <tbody id="tbodyhouse-data">
             </tbody>
         </table>
-        <input type="button" id="btnDelete" value="Clear Table" onclick="DeleteRows()"/>
+        <input type="button" id="btnDelete" value="Clear Table"/>
         <br>
         <br>
         <!-- FOOTER -->
@@ -130,9 +130,11 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src="main.js">
-    </script>
+    <!--
     <script src="pro-congress-113-house.js">
+    </script>
+    -->
+    <script src="fetch_house_senate_data.js">
     </script>
     <script src="house-data.js">
     </script>

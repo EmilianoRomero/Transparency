@@ -1,79 +1,109 @@
 body,
 html {
-  background: url("capitolhill.png");
-  margin: 0px;
-  padding: 0px;
-  background-color: #adadad; /* Used if the image is unavailable */
-  background-position: right; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background      : url("capitolhill.png");
+  margin          : 0px;
+  padding         : 0px;
+  background-color: #adadad;
+  /* Used if the image is unavailable */
+  background-position: right;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
   background-size: contain;
-  font-family: 'Arbutus Slab', serif;
+  /* Avoid background image scrolling with page */
+  background-attachment: fixed;
+  font-family          : 'Arbutus Slab', serif;
 }
-
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   background-color: skyblue;
-  color: black;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4 s;
-  }
+  color           : black;
+  cursor          : pointer;
+  padding         : 18px;
+  width           : 100%;
+  text-align      : left;
+  border          : none;
+  outline         : none;
+  transition      : 0.4 s;
+}
 
-  
+#banner,
+#capitol,
+.accordion {
+  border-radius: .25rem;
+  box-shadow   : 2px 2px 5px rgb(76, 76, 77);
+}
+
+h1,
+h2,
+h3,
+.contact,
+a,
+.footer {
+  text-shadow: 2px 2px 5px rgb(76, 76, 77);
+}
+
 .accordion:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  content: '\02795';
+  /* Unicode character for "plus" sign (+) */
   font-size: 13px;
-  color: #adadad;
-  float: right;
-  }
-  
-.active:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
-  }
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
-  background-color: skyblue;
-  }
-  
-  /* Style the accordion panel. Note: hidden by default */
-.panel {
-  padding: 0 18px;
-  background-color: transparent;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  }
+  color    : #adadad;
+  float    : right;
+}
 
-.dropdown-menu.show {
+.active:after {
+  content: "\2796";
+  /* Unicode character for "minus" sign (-) */
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: skyblue;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding         : 0 18px;
+  background-color: transparent;
+  max-height      : 0;
+  overflow        : hidden;
+  transition      : max-height 0.2s ease-out;
+}
+
+#ddm:hover {
+  background-color: rgb(187, 228, 245);
+}
+
+.dropdown {
   border: none;
-  }
+}
 
 .navbar {
   background-color: skyblue;
-  margin-top: 15px;
-  }
+  margin-top      : 15px;
+  border-radius   : .25rem;
+  box-shadow      : 2px 2px 5px rgb(76, 76, 77);
+}
 
 .contact {
-  text-align: right;
-  margin-top: 12%;
+  text-align : right;
+  margin-top : 12%;
   font-weight: bold;
-  font-size: 120%;
-  }
+  font-size  : 150%;
+}
 
 #envelope {
-  margin-top: 40px;
+  margin-top : 40px;
   margin-left: 10px;
-  }
+}
 
 .container-fluid {
   background-color: skyblue;
-  color: black;
+  color           : black;
+  border-radius   : .25rem;
+  box-shadow      : 2px 2px 5px rgb(76, 76, 77);
 }
 
 .container {
@@ -82,39 +112,70 @@ html {
 
 .footer {
   margin-top: 15px;
-  padding: 15px;
+  padding   : 15px;
 }
 
 .col-sm-7 {
-  flex: 100%;
+  flex     : 100%;
   max-width: 100%;
 }
+
 .col-sm-5 {
-  flex: 100%;
+  flex     : 100%;
   max-width: 100%;
 }
 
 #capitol {
-  margin-left: 15px;
-  margin-top: 15px;
+  margin-left  : 15px;
+  margin-top   : 15px;
   margin-bottom: 15px;
 }
 
 a:hover {
-  color: black;
+  color: rgb(212, 0, 0);
 }
 
 .row {
   margin-right: 0px;
-  margin-left: 0px;
+  margin-left : 0px;
+}
+
+.checkbox-inline,
+#indie,
+#dem,
+#rep,
+.filter
+{
+  cursor: pointer;
 }
 
 #selectors {
-  display: flex;
-  flex-direction: row;
+  display        : flex;
+  flex-direction : row;
   justify-content: space-between;
 }
 
+.table-bordered {
+  text-align : center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
 .table {
-  text-align: center;
+  border-radius  : .25rem;
+  border-collapse: unset;
+}
+
+a {
+  color: rgb(4, 4, 163)
+}
+
+#btnDelete
+{
+  position: fixed;
+  bottom: 20px;
+  right: 250px;
+  z-index: 99;
+  border-radius: .25rem;
+  background-color: skyblue;
+  cursor: pointer;
 }

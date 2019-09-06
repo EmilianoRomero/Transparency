@@ -24,14 +24,14 @@
 <body>
     <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4" style="background-color:skyblue;">
+        <div class="row" id="banner" style="background-color:skyblue;">
+            <div class="col-sm-4">
                 <img class="img-responsive" id="capitol" src="transparency logo.png" alt="logo">
             </div>
-            <div class="col-sm-6" style="background-color:skyblue;">
+            <div class="col-sm-6">
                 <p class="contact">Contact Us</p>
             </div>
-            <div class="col-sm-2" style="background-color:skyblue;">
+            <div class="col-sm-2">
                 <a href="mailto:info@tgif.net"><img class="img-responsive" id="envelope" src="icon2.png"></img></a>
             </div>
         </div>
@@ -40,7 +40,7 @@
 
         <nav class="navbar navbar-left">
             <ul class="nav navbar-nav">
-                <div class="row">
+                <div class="row" id="navbar">
                     <div class="col-sm-2">
                         <li><a id="home" href="transparency-index.html">Home</a>
                         </li>
@@ -50,8 +50,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="congress">Congress 113
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-data.html">House</a></li>
-                                <li><a href="senate-data.html">Senate</a></li>
+                                <li id="ddm"><a href="house-data.html">House</a></li>
+                                <li id="ddm"><a href="senate-data.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -60,8 +60,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-attendance-statistics.html">House</a></li>
-                                <li><a href="senate-attendance-statistics.html">Senate</a></li>
+                                <li id="ddm"><a href="house-attendance-statistics.html">House</a></li>
+                                <li id="ddm"><a href="senate-attendance-statistics.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -70,8 +70,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-partyloyalty-statistics.html">House</a></li>
-                                <li class="liactive"><a href="senate-partyloyalty-statistics.html">Senate</a></li>
+                                <li id="ddm"><a href="house-partyloyalty-statistics.html">House</a></li>
+                                <li class="liactive" id="ddm"><a href="senate-partyloyalty-statistics.html">Senate</a></li>
                             </ul>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     </h1>
                 </header>
 
-                <p>TThose who consider themselves to be strong partisans, strong Democrats and strong Republicans
+                <p> Those who consider themselves to be strong partisans, strong Democrats and strong Republicans
                     respectively,
                     tend to be the most faithful in voting for their party's nominee for office and legislation that
                     backs their
@@ -110,7 +110,7 @@
                                 <th class="votes">% Votes with the Party</th>
                             </tr>
                         </thead>
-                        <tbody id="glance">
+                        <tbody id="senateglance">
                         </tbody>
                     </table>
                 </div>
@@ -169,9 +169,9 @@
     </div>
 
      <!-- SCRIPTS -->
-     <script src="fetch-senate-attendance.js">
+     <script src="fetch_senate_statistics.js">
     </script>
-    <script src="statistics.js">
+    <script src="senate_statistics.js">
     </script>
     <!--
     <script src="pro-congress-113-senate.js">

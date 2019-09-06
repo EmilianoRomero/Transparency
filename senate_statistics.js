@@ -1,7 +1,8 @@
-//----------------------------------------------------------------------------------------------------------------
-//FILE: statistics.js
-//LINKED TO: senate-attendance-statistics.html and senate-partyloyalty-statistics.html and fetch-senate-attendance.js
-//----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------//
+//FILE: senate_statistics.js
+//LINKED TO: senate_attendance_statistics.html and senate_partyloyalty_statistics.html and fetch-senate-statistics.js
+//----------------------------------------------------------------------------------------------------------------//
+
 let dataStat = {
     "statistics": [{
             "party": "Republican",
@@ -81,6 +82,7 @@ function mapMembersVotes(members) {
     console.log(membersVotes);
     separateVotesByParty(membersVotes, members)
 }
+
 //This function is new. Was generated during the fetching process and replaces the three originally used
 function separateVotesByParty(membersVotes, members) {
 
@@ -141,7 +143,7 @@ function separateVotesByParty(membersVotes, members) {
 // FEEDING THE HTML WITH THE DATA FOR SENATE AT GLANCE
 //----------------------------------------------------------------------------------------------------------------------
 
-let tbodyGlance = document.getElementById("glance")
+let tbodyGlance = document.getElementById("senateglance")
 
 function buildTable(statistics) {
     let statisticsL = statistics.length;

@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
 
     <!-- JQ -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
@@ -24,14 +24,14 @@
 <body>
     <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4" style="background-color:skyblue;">
+        <div class="row" id="banner" style="background-color:skyblue;">
+            <div class="col-sm-4">
                 <img class="img-responsive" id="capitol" src="transparency logo.png" alt="logo">
             </div>
-            <div class="col-sm-6" style="background-color:skyblue;">
+            <div class="col-sm-6">
                 <p class="contact">Contact Us</p>
             </div>
-            <div class="col-sm-2" style="background-color:skyblue;">
+            <div class="col-sm-2">
                 <a href="mailto:info@tgif.net"><img class="img-responsive" id="envelope" src="icon2.png"></img></a>
             </div>
         </div>
@@ -40,7 +40,7 @@
 
         <nav class="navbar navbar-left">
             <ul class="nav navbar-nav">
-                <div class="row">
+                <div class="row" id="navbar">
                     <div class="col-sm-2">
                         <li><a id="home" href="transparency-index.html">Home</a>
                         </li>
@@ -50,8 +50,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="congress">Congress 113
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-data.html">House</a></li>
-                                <li><a href="senate-data.html">Senate</a></li>
+                                <li id="ddm"><a href="house-data.html">House</a></li>
+                                <li id="ddm"><a href="senate-data.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -60,8 +60,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-attendance-statistics.html">House</a></li>
-                                <li class="liactive"><a href="senate-attendance-statistics.html">Senate</a></li>
+                                <li id="ddm"><a href="house-attendance-statistics.html">House</a></li>
+                                <li class="liactive" id="ddm"><a href="senate-attendance-statistics.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -70,8 +70,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-partyloyalty-statistics.html">House</a></li>
-                                <li><a href="senate-partyloyalty-statistics.html">Senate</a></li>
+                                <li id="ddm"><a href="house-partyloyalty-statistics.html">House</a></li>
+                                <li id="ddm"><a href="senate-partyloyalty-statistics.html">Senate</a></li>
                             </ul>
                     </div>
                 </div>
@@ -89,13 +89,13 @@
                     </h1>
                 </header>
 
-                <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each
+                <p> The Constitution specifies that a majority of members constitutes a quorum to do business in each
                     house.
                     Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus,
                     in most
                     cases, debates continue even if a majority is not present.</p>
 
-                <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator
+                <p> The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator
                     stating "aye"
                     or "no" when his or her name is announced. The House reserves roll-call votes for the most formal
                     matters,
@@ -121,7 +121,7 @@
                                 <th class="votes">% Votes with the Party</th>
                             </tr>
                         </thead>
-                        <tbody id="glance">
+                        <tbody id="senateglance">
                         </tbody>
                     </table>
                 </div>
@@ -180,9 +180,9 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src="fetch-senate-attendance.js">
+    <script src="fetch_senate_statistics.js">
     </script>
-    <script src="statistics.js">
+    <script src="senate_statistics.js">
     </script>
     <!--
     <script src="pro-congress-113-senate.js">

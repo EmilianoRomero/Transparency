@@ -1,16 +1,22 @@
-//FILE: fetch-senate-attendance.js linked to statistics.js and senate-attendance.statistics.html
+//FILE: fetch-senate-attendance.js 
+//linked to 
+//statistics.js to 
+//senate-attendance-statistics.html and senate-partyloyalty-statistics.html
+//house-attendance-statistics.html and house-partyloyalty-statistics.html
 
 //ACCESSING JSON ON LINE. FILTERING BY CHAMBER.
 accessingTheOnLineJSON()
 
-function accessingTheOnLineJSON() {
+function accessingTheOnLineJSON()
+/*{
     let value = " ";
-    if (document.title.includes("Senate")) {
-        value = "senate"
-    } else {
-        value = "house"
-    }
-    let url = "https://api.propublica.org/congress/v1/113/" + value + "/members.json"
+if (document.title.includes("Senate")) {
+    value = "senate"
+} else {
+    value = "house"
+}*/
+{
+    let url = "https://api.propublica.org/congress/v1/113/house/members.json"
     fetchingDataFromOnLineJSON(url)
 }
 
@@ -27,22 +33,22 @@ function fetchingDataFromOnLineJSON(url) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data.results[0].members);
             let members = data.results[0].members;
-            let statistics = dataStat.statistics;
+            console.log(members);
+            let housestatistics = dataStatHouse.housestatistics;
 
             mapMembersParty(members);
             mapMembersVotes(members);
 
-            buildTable(statistics);
-            
-            if (document.title.includes("Loyalty")){
+            buildTable(housestatistics);
+
+            if (document.title.includes("Loyalty")) {
                 sortAscending(members, "votes_with_party_pct");
                 feedsLeastTable(members);
 
                 sortDescending(members, "votes_with_party_pct");
                 feedsMostTable(members);
-            }else{
+            } else {
                 sortAscending(members, "missed_votes_pct");
                 feedsHighestAttendanceTable(members);
 

@@ -6,11 +6,10 @@
 //------------------------------
 // 01. TABLE id = house-data
 //------------------------------
-let members = data.results[0].members;
 
-function CreateTableFromJSON(members) {
+function createTableFromJSON(members) {
 
-    var tbody = document.getElementById("tbodysenate-data");
+    var tbody = document.getElementById("tbodyhouse-data");
     tbody.innerHTML = "";
     for (var i = 0; i < members.length; i++) {
 
@@ -49,9 +48,8 @@ function CreateTableFromJSON(members) {
         tbody.appendChild(tr)
     }
 }
-CreateTableFromJSON(members);
 
-
+//Getting rid of the duplicated states
 function removeDupl(members) {
     let noDuplicates = [];
     members.forEach(function (member) {
@@ -60,81 +58,90 @@ function removeDupl(members) {
         }
     })
     console.log(noDuplicates)
-
     noDuplicates.sort()
     console.log(noDuplicates)
-
     createStateSelect(noDuplicates);
 }
-removeDupl(members);
 
-
+//Feeds the selector for the states from the array without duplicates
 function createStateSelect(noDuplicates) {
-    
     let select = document.getElementById("filterbystate")
-        for (var i = 0; i < noDuplicates.length; i++) {
-/*        members.sort(function (a, b) {
-            if (a.state > b.state) {
-                return 1;
-            }
-            if (a.state < b.state) {
-                return -1;
-            }
-            return 0; // a must be equal to b
-        })
-*/        
+    for (let i = 0; i < noDuplicates.length; i++) {
         let states = noDuplicates[i]
-        var option = document.createElement("option")
+        let option = document.createElement("option")
         option.textContent = states
         option.value = states
-        console.log(states)
         select.appendChild(option)
     }
 }
-//createStateSelect(states)
+
+//This original functions provides the possible values for the inputs, not the selected ones
+//Inputs selection separated now from the original piece of code and then call to the filtering function
+//which will create the array based on the selections performed in the input
+function getInputsValues(members) {
+    let i;
+    let checkBoxes = document.querySelectorAll("input[name=party]");
+    let checkBoxesL = checkBoxes.length;
+    for (i = 0; i < checkBoxesL; i++) {
+        checkBoxes[i].addEventListener("change", function () {
+            getInputsSelections(members)
+        })
+    }
+    let selectedState = document.getElementById("filterbystate");
+    selectedState.addEventListener("change", function () {
+        getInputsSelections(members)
+    });
+}
+
+//This new function collects the chosen values, the selected ones
+//Helper function (Why cannot call directly filterMembers?)
+function getInputsSelections(members) {
+    //console.log("i am here")
+    let checkBoxes = document.querySelectorAll("input[name=party]:checked");
+    let checkedBoxesArray = Array.from(checkBoxes).map(checkbox => checkbox.value);
+    let selectedState = document.getElementById("filterbystate").value;
+    console.log(checkedBoxesArray, selectedState)
+    console.log(members)
+    filterMembers(checkedBoxesArray, selectedState, members)
+}
 
 
+//Filter function feeded by the selections of the check boxes and the selected state on the drop down menu
+function filterMembers(checkedBoxesArray, selectedState, members) {
+    //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
+    let filteredMembers = [];
+    let mL = members.length;
+    let cBA = checkedBoxesArray;
+    let cBAL = checkedBoxesArray.length;
 
-function filterMembers() { //Filtro miembros por partido y por estado, y los empujo a un nuevo array según ifs del loop
-
-    var checkedBoxes = document.querySelectorAll("input[name=party]:checked");
-    var checkboxArray = Array.from(checkedBoxes).map(checkbox => checkbox.value);
-    var selectedState = document.getElementById("filterbystate").value; //DEFINES + LINKS OPTIONS OF THE DROPDOWN MENU
-    console.log(checkboxArray)
-    console.log(selectedState)
-
-    var filteredMembers = [];
-
-    for (var i = 0; i < members.length; i++) {
-        if (checkboxArray.length == 0 && selectedState == "") {
+    for (let i = 0; i < mL; i++) {
+        if (cBAL == 0 && selectedState == "") {
             filteredMembers = members
-        } else if (selectedState !== "" && checkboxArray.length == 0) {
+        } else if (selectedState !== "" && cBAL == 0) {
             if (selectedState.includes(members[i].state)) {
                 filteredMembers.push(members[i])
             }
-        } else if (checkboxArray.length !== 0 && selectedState == "") {
-            if (checkboxArray.includes(members[i].party)) {
+        } else if (cBAL !== 0 && selectedState == "") {
+            if (cBA.includes(members[i].party)) {
                 filteredMembers.push(members[i])
             }
         } else {
-            if (checkboxArray.includes(members[i].party) && selectedState.includes(members[i].state)) {
+            if (cBA.includes(members[i].party) && selectedState.includes(members[i].state)) {
                 filteredMembers.push(members[i])
             }
         }
     }
-    checkedBoxes.onchange = CreateTableFromJSON(filteredMembers)
-    selectedState.onchange = CreateTableFromJSON(filteredMembers)
+    createTableFromJSON(filteredMembers);
 }
 
-function helperFunction() {
-    filterMembers(members);
-}
+//CLEAR TABLE
+let btn = document.getElementById("btnDelete");
+btn.addEventListener("click", deleteRows);
 
-// SCRIPT CLEAR TABLE
-        function DeleteRows() {
-            var rowCount = table.rows.length;
-            for (var i = rowCount - 1; i > 0; i--) {
-                table.deleteRow(i);
-            }
-        }
-        var table = document.getElementById("house-data");
+function deleteRows() {
+    let rowCount = table.rows.length;
+    for (let i = rowCount - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+}
+let table=document.getElementById("house-data");

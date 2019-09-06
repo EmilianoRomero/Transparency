@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="transparency.css">
-    <title>Congress 113 Party Loyalty Statistics</title>
+    <title>Congress 113 House Party Loyalty Statistics</title>
 </head>
 
 <!-- BODY -->
@@ -24,14 +24,14 @@
 <body>
     <!-- LOGO AND CONTACT SECTION -->
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4" style="background-color:skyblue;">
+        <div class="row" id="banner" style="background-color:skyblue;">
+            <div class="col-sm-4">
                 <img class="img-responsive" id="capitol" src="transparency logo.png" alt="logo">
             </div>
-            <div class="col-sm-6" style="background-color:skyblue;">
+            <div class="col-sm-6">
                 <p class="contact">Contact Us</p>
             </div>
-            <div class="col-sm-2" style="background-color:skyblue;">
+            <div class="col-sm-2">
                 <a href="mailto:info@tgif.net"><img class="img-responsive" id="envelope" src="icon2.png"></img></a>
             </div>
         </div>
@@ -40,7 +40,7 @@
 
         <nav class="navbar navbar-left">
             <ul class="nav navbar-nav">
-                <div class="row">
+                <div class="row" id="navbar">
                     <div class="col-sm-2">
                         <li><a id="home" href="transparency-index.html">Home</a>
                         </li>
@@ -50,8 +50,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="congress">Congress 113
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-data.html">House</a></li>
-                                <li><a href="senate-data.html">Senate</a></li>
+                                <li id="ddm"><a href="house-data.html">House</a></li>
+                                <li id="ddm"><a href="senate-data.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -60,8 +60,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="att">Attendance Statistics
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="house-attendance-statistics.html">House</a></li>
-                                <li><a href="senate-attendance-statistics.html">Senate</a></li>
+                                <li id="ddm"><a href="house-attendance-statistics.html">House</a></li>
+                                <li id="ddm"><a href="senate-attendance-statistics.html">Senate</a></li>
                             </ul>
                         </li>
                     </div>
@@ -70,8 +70,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="loyalty">Party Loyalty
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li class="liactive"><a href="house-partyloyalty-statistics.html">House</a></li>
-                                <li><a href="senate-partyloyalty-statistics.html">Senate</a></li>
+                                <li class="liactive" id="ddm"><a href="house-partyloyalty-statistics.html">House</a></li>
+                                <li id="ddm"><a href="senate-partyloyalty-statistics.html">Senate</a></li>
                             </ul>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     </h1>
                 </header>
 
-                <p>TThose who consider themselves to be strong partisans, strong Democrats and strong Republicans
+                <p> Those who consider themselves to be strong partisans, strong Democrats and strong Republicans
                     respectively,
                     tend to be the most faithful in voting for their party's nominee for office and legislation that
                     backs their
@@ -110,7 +110,7 @@
                                 <th class="votes">% Votes with the Party</th>
                             </tr>
                         </thead>
-                        <tbody id="glance">
+                        <tbody id="houseglance">
                         </tbody>
                     </table>
                 </div>
@@ -169,14 +169,20 @@
     </div>
 
     <!-- SCRIPTS -->
+    <!--
     <script src="main.js">
     </script>
     <script src="pro-congress-113-house.js">
     </script>
-    <script src="house statistics.js">
-    </script>
     <script src="statistics.json">
     </script>
+    -->
+    <script src="fetch_house_statistics.js">
+    </script>
+    <script src="house_statistics.js">
+    </script>
+    
+    
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
